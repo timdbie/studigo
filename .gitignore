@@ -1,0 +1,25 @@
+# general
+.vscode/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+
+# JetBrains Rider specific
+.idea/
+
+# packages
+*.nupkg
+*.dll
+*.exe
+*.pdb
+
+# os generated files
+.DS_Store
+Thumbs.db
+
+# build results
+/bin/
+/obj/
