@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudiGO", "StudiGO\StudiGO.csproj", "{753BA9BD-4E6F-488A-8C31-90360BCFEA8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudiGO.Web", "StudiGO.Web\StudiGO.Web.csproj", "{753BA9BD-4E6F-488A-8C31-90360BCFEA8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
