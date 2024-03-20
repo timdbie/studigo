@@ -5,8 +5,6 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-app.Urls.Add("http://*:5000");
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
