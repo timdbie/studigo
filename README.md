@@ -13,7 +13,7 @@ This repository is organized to manage the project efficiently. To ensure a stru
 - **main:** The main branch is the stable production branch. It should always contain the latest stable and deployable version of your code. Direct commits to main should be avoided.
 - **chore/:** Create chore branches for non-feature tasks such as maintenance, code refactoring, or other housekeeping activities. 
 - **feature/:** Create feature branches when working on new functionality or enhancements.
-- **bug/:** Bug fixes.
+- **bug/:** Create bug branches when working on a fix for a specific bug.
 
 ### Commit Message Prefixes
 - **feat:** Adding a new feature.
