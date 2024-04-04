@@ -12,7 +12,7 @@ namespace StudiGO.DAL.Infrastructure
             _httpClient = new HttpClient();
         }
 
-        public async Task<HttpResponseMessage> GetAsync(string requestUrl, IDictionary<string, string>? headers = null)
+        public async Task<HttpResponseMessage> GetAsync(string requestUrl, Dictionary<string, string>? headers = null)
         {
             try
             {

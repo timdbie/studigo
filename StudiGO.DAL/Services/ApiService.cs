@@ -8,11 +8,13 @@ public class ApiService
 {
     private readonly HttpClientWrapper _httpClientWrapper;
     private readonly string _baseUrl;
+    private readonly string _subscriptionKey;
 
-    public ApiService(HttpClientWrapper httpClientWrapper, string baseUrl)
+    public ApiService(HttpClientWrapper httpClientWrapper, string baseUrl, string subscriptionKey)
     {
         _httpClientWrapper = httpClientWrapper;
         _baseUrl = baseUrl;
+        _subscriptionKey = subscriptionKey;
     }
     
     public async Task<StationsDto[]> GetStationsAsync(string query, string countryCode, int limit)
@@ -25,7 +27,12 @@ public class ApiService
     {
         try
         {
-            HttpResponseMessage response = await _httpClientWrapper.GetAsync(_baseUrl + endpoint);
+            var headers = new Dictionary<string, string>
+            {
+                { "Ocp-Apim-Subscription-Key", _subscriptionKey }
+            };
+            
+            HttpResponseMessage response = await _httpClientWrapper.GetAsync(_baseUrl + endpoint, headers);
             response.EnsureSuccessStatusCode();
                 
             string jsonResponse = await response.Content.ReadAsStringAsync();
