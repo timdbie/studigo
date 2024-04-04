@@ -1,26 +1,35 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace StudiGO.DAL.Infrastructure;
-
-public class HttpClientWrapper
+namespace StudiGO.DAL.Infrastructure
 {
-    private readonly HttpClient _httpClient;
-
-    public HttpClientWrapper()
+    public class HttpClientWrapper
     {
-        _httpClient = new HttpClient();
-    }
+        private readonly HttpClient _httpClient;
 
-    public async Task<HttpResponseMessage> GetAsync(string requestUrl)
-    {
-        try
+        public HttpClientWrapper()
         {
-            return await _httpClient.GetAsync(requestUrl);
+            _httpClient = new HttpClient();
         }
-        catch (HttpRequestException ex)
+
+        public async Task<HttpResponseMessage> GetAsync(string requestUrl, IDictionary<string, string>? headers = null)
         {
-            throw ex;
+            try
+            {
+                if (headers != null)
+                {
+                    foreach (var header in headers)
+                    {
+                        _httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
+                    }
+                }
+
+                return await _httpClient.GetAsync(requestUrl);
+            }
+            catch (HttpRequestException ex)
+            {
+                throw ex;
+            }
         }
     }
 }
