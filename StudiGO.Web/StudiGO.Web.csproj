@@ -59,4 +59,8 @@
       <PackageReference Include="AspNetCore.SassCompiler" Version="1.74.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\css\" />
+    </ItemGroup>
+
 </Project>
