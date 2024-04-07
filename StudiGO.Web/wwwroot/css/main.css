@@ -1,26 +1,36 @@
 .main_banner .banner_tabs {
   width: 100%;
-  height: 45px;
+  height: 48px;
   display: flex;
   background-color: white;
+  align-items: flex-end;
 }
 .main_banner .banner_tabs div {
   width: 50%;
-  margin-top: 5px;
+  height: 44px;
   background-color: lightgray;
   display: flex;
   align-items: center;
   padding: 0 10px;
   color: white;
+  cursor: pointer;
+  transition: 0.3s;
 }
 .main_banner .banner_tabs div:nth-child(1) {
   justify-content: flex-end;
 }
+.main_banner .banner_tabs div:nth-child(1).banner_tabs-selected {
+  border-radius: 0 4px 0 0;
+}
 .main_banner .banner_tabs div:nth-child(2) {
   justify-content: flex-start;
 }
+.main_banner .banner_tabs div:nth-child(2).banner_tabs-selected {
+  border-radius: 4px 0 0 0;
+}
 .main_banner .banner_tabs .banner_tabs-selected {
-  margin-top: 0;
+  height: 48px;
+  padding-top: 4px;
   background-color: gray;
 }
 .main_banner .banner {
