@@ -1,6 +1,9 @@
-namespace StudiGO.Core.Interfaces;
+using StudiGO.Core.DTOs;
 
-public interface IStationsRepository
+namespace StudiGO.Core.Interfaces
 {
-    
+    public interface IStationsRepository
+    {
+        Task<StationsDto> GetStationsAsync(string query, string countryCode, int limit);
+    }
 }
