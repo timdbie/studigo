@@ -9,14 +9,14 @@ namespace StudiGO.DAL.Repositories
         private readonly string _baseUrl;
         private readonly string _subscriptionKey;
 
-        protected ApiBaseRepository(HttpClientWrapper httpClientWrapper, string baseUrl, string subscriptionKey)
+        public ApiBaseRepository(HttpClientWrapper httpClientWrapper, string baseUrl)
         {
             _httpClientWrapper = httpClientWrapper;
             _baseUrl = baseUrl;
-            _subscriptionKey = subscriptionKey;
+            _subscriptionKey = GetSubscriptionKey();
         }
 
-        protected async Task<T> GetApiResponseAsync<T>(string endpoint)
+        public async Task<T> GetApiResponseAsync<T>(string endpoint)
         {
             try
             {
@@ -37,6 +37,16 @@ namespace StudiGO.DAL.Repositories
             }
         }
 
-        protected Task<TResponse> GetAsync<TResponse>(string endpoint) => GetApiResponseAsync<TResponse>(endpoint);
+        public Task<TResponse> GetAsync<TResponse>(string endpoint) => GetApiResponseAsync<TResponse>(endpoint);
+
+        private string GetSubscriptionKey()
+        {
+            string subscriptionKey = Environment.GetEnvironmentVariable("STUDIGO_SUBSCRIPTION_KEY");
+            if (string.IsNullOrEmpty(subscriptionKey))
+            {
+                throw new InvalidOperationException("STUDIGO_SUBSCRIPTION_KEY is missing or empty.");
+            }
+            return subscriptionKey;
+        }
     }
 }
