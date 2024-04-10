@@ -1,8 +1,8 @@
-using StudiGO.DAL.DTOs;
-using Newtonsoft.Json;
+using StudiGO.DAL.API.DTOs;
 using StudiGO.DAL.Infrastructure;
+using Newtonsoft.Json;
 
-namespace StudiGO.DAL.Services;
+namespace StudiGO.DAL.API;
 
 public class ApiService
 {
