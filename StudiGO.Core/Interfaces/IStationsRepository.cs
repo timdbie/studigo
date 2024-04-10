@@ -1,4 +1,4 @@
-namespace StudiGO.DAL.Interfaces;
+namespace StudiGO.Core.Interfaces;
 
 public interface IStationsRepository
 {
