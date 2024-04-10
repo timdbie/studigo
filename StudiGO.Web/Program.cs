@@ -3,6 +3,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+// SASS watcher
+#if DEBUG
+builder.Services.AddSassCompiler();
+#endif
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
