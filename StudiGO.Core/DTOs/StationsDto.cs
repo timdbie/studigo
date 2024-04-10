@@ -1,4 +1,4 @@
-namespace StudiGO.DAL.API.DTOs;
+namespace StudiGO.Core.DTOs;
 
 public class StationsDto
 {
