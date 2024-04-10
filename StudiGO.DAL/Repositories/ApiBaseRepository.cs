@@ -5,14 +5,13 @@ namespace StudiGO.DAL.Repositories
 {
     public abstract class ApiBaseRepository
     {
-        private readonly HttpClientWrapper _httpClientWrapper;
-        private readonly string _baseUrl;
+        private static readonly HttpClientWrapper _httpClientWrapper = new();
+        private static readonly string _baseUrl = "https://gateway.apiportal.ns.nl";
+
         private readonly string _subscriptionKey;
 
-        public ApiBaseRepository(HttpClientWrapper httpClientWrapper, string baseUrl)
+        public ApiBaseRepository()
         {
-            _httpClientWrapper = httpClientWrapper;
-            _baseUrl = baseUrl;
             _subscriptionKey = GetSubscriptionKey();
         }
 
