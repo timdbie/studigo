@@ -29,14 +29,13 @@ namespace StudiGO.DAL.Repositories
 
                 string jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return JsonConvert.DeserializeObject<T>(jsonResponse);
+                // Move this to avoid generics!!!
             }
             catch (HttpRequestException ex)
             {
                 throw new Exception($"Error fetching data from {_baseUrl}{endpoint}: {ex.Message}", ex);
             }
         }
-
-        public Task<TResponse> GetAsync<TResponse>(string endpoint) => GetApiResponseAsync<TResponse>(endpoint);
 
         private string GetSubscriptionKey()
         {
