@@ -29,7 +29,6 @@ namespace StudiGO.DAL.Repositories
 
                 string jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return JsonConvert.DeserializeObject<T>(jsonResponse);
-                // Move this to avoid generics!!!
             }
             catch (HttpRequestException ex)
             {
