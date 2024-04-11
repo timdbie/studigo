@@ -1,5 +1,37 @@
 ﻿@page
+@using StudiGO.Core.DTOs
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
+
+<form method="get">
+    <input type="text" name="query" />
+    <button type="submit">Zoeken</button>
+</form>
+
+@if (ViewData["Stations"] != null)
+{
+    var stationsDto = ViewData["Stations"] as StationsDto;
+    if (stationsDto.payload != null && stationsDto.payload.Any())
+    {
+        <ul>
+            @foreach (var payload in stationsDto.payload)
+            {
+                <li>
+                    <strong>EVACode:</strong> @payload.EVACode<br />
+                    <strong>UICCode:</strong> @payload.UICCode<br />
+                    <strong>CdCode:</strong> @payload.CdCode<br />
+                    <strong>Code:</strong> @payload.Code<br />
+                    <strong>StationType:</strong> @payload.StationType<br />
+                    <strong>Namen:</strong> @payload.Namen.Lang, @payload.Namen.Middel, @payload.Namen.Kort<br />
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No stations found.</p>
+    }
+}
+else
+{
+    <p>No query provided.</p>
 }

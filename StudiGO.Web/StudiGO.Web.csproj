@@ -63,4 +63,9 @@
       <Folder Include="wwwroot\css\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\StudiGO.Core\StudiGO.Core.csproj" />
+      <ProjectReference Include="..\StudiGO.DAL\StudiGO.DAL.csproj" />
+    </ItemGroup>
+
 </Project>
