@@ -12,13 +12,16 @@ public class IndexModel : PageModel
     {
         _stationsService = stationsService;
     }
-
-    public async Task OnGetAsync(string query)
+    
+    public async Task<IActionResult> OnGetStationsAsync(string query)
     {
         if (!string.IsNullOrEmpty(query))
         {
             var stationsDto = await _stationsService.GetStationsAsync(query, "NL", 10);
-            ViewData["Stations"] = stationsDto;
+            return new JsonResult(stationsDto);
         }
+        
+        return BadRequest("Invalid query.");
     }
+
 }
