@@ -17,7 +17,7 @@ public class IndexModel : PageModel
     {
         if (!string.IsNullOrEmpty(query))
         {
-            var stationsDto = await _stationsService.GetStationsAsync(query, "NL", 10);
+            var stationsDto = await _stationsService.GetFilteredStationsAsync(query, "NL", 10);
             return new JsonResult(stationsDto);
         }
         
