@@ -31,17 +31,20 @@ async function getResults(input, element) {
 $(".stations-search input").on("input", function() {
     clearTimeout(searchTimer);
 
-    var input = $(this).val();
+    var inputVal = $(this).val();
     var search = $(this).closest(".stations-search");
     
     searchTimer = setTimeout(async function() {
-        if(input !== "") {
-            await getResults(input, search);
+        if(inputVal !== "") {
+            await getResults(inputVal, search);
         }
     }, 500);
 }).on("blur", function() {
-    var results = $(this).next(".stations-search_results");
-    
-    results.empty();
+
 });
 
+$(".stations-search").on("click", ".stations-search_results div", function() {
+    var input = $(this).closest(".stations-search").find("input");
+
+    input.val($(this).text());
+});
