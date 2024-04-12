@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 
-<div class="main_banner">
+<div class="banner">
     <div class="banner_tabs">
         <div class="banner_tabs-selected">
             <span>Reisplanner</span>
@@ -10,23 +10,23 @@
             <span>Schoolrooster</span>
         </div>
     </div>
-    <div class="banner">
+    <div class="banner_content">
         <div class="banner_planner">
             <h1>Plan je reis</h1>
             <div class="planner">
                 <div class="planner_search">
-                    <div class="stations-search">
+                    <div class="stations_search">
                         <label for="from">van</label>
                         <input id="from" type="text" name="query" autocomplete="off" placeholder="station of stad"/>
-                        <div class="stations-search_results"></div>
+                        <div class="stations_results"></div>
                     </div>
                     
                     <div class="planner_switch"></div>
                     
-                    <div class="stations-search">
+                    <div class="stations_search">
                         <label for="from">naar</label>
                         <input type="text" name="query" autocomplete="off" placeholder="station of stad"/>
-                        <div class="stations-search_results"></div>
+                        <div class="stations_results"></div>
                     </div>
                 </div>
             </div>

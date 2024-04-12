@@ -14,7 +14,7 @@ async function getStations(query) {
 }
 
 async function getResults(input, element) {
-    var results = element.children(".stations-search_results");
+    var results = element.children(".stations_results");
     results.empty();
 
     try {
@@ -28,11 +28,11 @@ async function getResults(input, element) {
     }
 }
 
-$(".stations-search input").on("input", function() {
+$(".stations_search input").on("input", function() {
     clearTimeout(searchTimer);
 
     var inputVal = $(this).val();
-    var search = $(this).closest(".stations-search");
+    var search = $(this).closest(".stations_search");
     
     searchTimer = setTimeout(async function() {
         if(inputVal !== "") {
@@ -40,16 +40,16 @@ $(".stations-search input").on("input", function() {
         }
     }, 500);
 }).on("focus", function() {
-    var results = $(this).next(".stations-search_results");
+    var results = $(this).next(".stations_results");
     results.show();
 }).on("blur", function() {
-    var results = $(this).next(".stations-search_results");
+    var results = $(this).next(".stations_results");
     results.hide();
 });
 
-$(".stations-search").on("mousedown", ".stations-search_results div", function(event) {
+$(".stations_search").on("mousedown", ".stations_results div", function(event) {
     if(event.button === 0) {
-        var input = $(this).closest(".stations-search").find("input");
+        var input = $(this).closest(".stations_search").find("input");
 
         input.val($(this).text());
     } else {

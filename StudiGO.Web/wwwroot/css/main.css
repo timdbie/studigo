@@ -1,11 +1,11 @@
-.main_banner .banner_tabs {
+.banner .banner_tabs {
   width: 100%;
   height: 48px;
   display: flex;
   background-color: white;
   align-items: flex-end;
 }
-.main_banner .banner_tabs div {
+.banner .banner_tabs div {
   width: 50%;
   height: 44px;
   background-color: lightgray;
@@ -16,54 +16,54 @@
   cursor: pointer;
   transition: 0.3s;
 }
-.main_banner .banner_tabs div:nth-child(1) {
+.banner .banner_tabs div:nth-child(1) {
   justify-content: flex-end;
 }
-.main_banner .banner_tabs div:nth-child(1).banner_tabs-selected {
+.banner .banner_tabs div:nth-child(1).banner_tabs-selected {
   border-radius: 0 4px 0 0;
 }
-.main_banner .banner_tabs div:nth-child(2) {
+.banner .banner_tabs div:nth-child(2) {
   justify-content: flex-start;
 }
-.main_banner .banner_tabs div:nth-child(2).banner_tabs-selected {
+.banner .banner_tabs div:nth-child(2).banner_tabs-selected {
   border-radius: 4px 0 0 0;
 }
-.main_banner .banner_tabs .banner_tabs-selected {
+.banner .banner_tabs .banner_tabs-selected {
   height: 48px;
   padding-top: 4px;
   background-color: gray;
 }
-.main_banner .banner {
+.banner .banner_content {
   width: 100%;
   height: 300px;
   background-color: gray;
   display: flex;
   justify-content: center;
 }
-.main_banner .banner .banner_planner {
+.banner .banner_content .banner_planner {
   width: 100%;
   max-width: 1120px;
   padding: 0 20px;
 }
-.main_banner .banner .banner_planner h1 {
+.banner .banner_content .banner_planner h1 {
   font-weight: 600;
   font-size: 32px;
   color: white;
 }
-.main_banner .banner .banner_planner .planner .planner_search {
+.banner .banner_content .banner_planner .planner .planner_search {
   width: 100%;
   height: 55px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.main_banner .banner .banner_planner .planner .planner_search .stations-search {
+.banner .banner_content .banner_planner .planner .planner_search .stations_search {
   flex: 1;
 }
-.main_banner .banner .banner_planner .planner .planner_search .stations-search input {
+.banner .banner_content .banner_planner .planner .planner_search .stations_search input {
   padding: 0 10px 0 50px;
 }
-.main_banner .banner .banner_planner .planner .planner_search .stations-search label {
+.banner .banner_content .banner_planner .planner .planner_search .stations_search label {
   width: 50px;
   height: 100%;
   position: absolute;
@@ -73,7 +73,7 @@
   font-weight: 600;
   font-size: 14px;
 }
-.main_banner .banner .banner_planner .planner .planner_search .planner_switch {
+.banner .banner_content .banner_planner .planner .planner_search .planner_switch {
   width: 55px;
   height: 55px;
   border-radius: 55px;
