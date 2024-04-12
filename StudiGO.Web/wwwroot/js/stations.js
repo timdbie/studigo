@@ -45,8 +45,12 @@ $(".stations-search input").on("input", function() {
     $(".stations-search_results").hide();
 });
 
-$(".stations-search").on("click", ".stations-search_results div", function() {
-    var input = $(this).closest(".stations-search").find("input");
+$(".stations-search").on("mousedown", ".stations-search_results div", function(event) {
+    if(event.button === 0) {
+        var input = $(this).closest(".stations-search").find("input");
 
-    input.val($(this).text());
+        input.val($(this).text());
+    } else {
+        event.preventDefault();
+    }
 });
