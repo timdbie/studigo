@@ -40,9 +40,11 @@ $(".stations-search input").on("input", function() {
         }
     }, 500);
 }).on("focus", function() {
-    $(".stations-search_results").show();
+    var results = $(this).next(".stations-search_results");
+    results.show();
 }).on("blur", function() {
-    $(".stations-search_results").hide();
+    var results = $(this).next(".stations-search_results");
+    results.hide();
 });
 
 $(".stations-search").on("mousedown", ".stations-search_results div", function(event) {
