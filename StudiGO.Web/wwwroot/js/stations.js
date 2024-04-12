@@ -39,8 +39,10 @@ $(".stations-search input").on("input", function() {
             await getResults(inputVal, search);
         }
     }, 500);
+}).on("focus", function() {
+    $(".stations-search_results").show();
 }).on("blur", function() {
-
+    $(".stations-search_results").hide();
 });
 
 $(".stations-search").on("click", ".stations-search_results div", function() {
