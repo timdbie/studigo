@@ -39,4 +39,9 @@ $(".stations-search input").on("input", function() {
             await getResults(input, search);
         }
     }, 500);
+}).on("blur", function() {
+    var results = $(this).next(".stations-search_results");
+    
+    results.empty();
 });
+
