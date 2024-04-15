@@ -10,6 +10,7 @@ public class Trip
     public int plannedDurationInMinutes { get; set; }
     public int actualDurationInMinutes { get; set; }
     public int transfers { get; set; }
+    public string status { get; set; }
     public List<Leg> legs { get; set; }
 }
 
