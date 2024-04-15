@@ -13,7 +13,7 @@ async function getStations(query) {
     }
 }
 
-async function getResults(input, element) {
+async function getStationResults(input, element) {
     var results = element.children(".stations_results");
     results.empty();
 
@@ -36,7 +36,7 @@ $(".stations_search input").on("input", function() {
     
     searchTimer = setTimeout(async function() {
         if(inputVal !== "") {
-            await getResults(inputVal, search);
+            await getStationResults(inputVal, search);
         }
     }, 500);
 }).on("focus", function() {
