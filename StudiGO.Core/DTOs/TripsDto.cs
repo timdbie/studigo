@@ -7,27 +7,27 @@ public class TripsDto
 
 public class Trip
 {
-    public int plannedDurationInMinutes { get; set; }
-    public int actualDurationInMinutes { get; set; }
-    public int transfers { get; set; }
-    public string status { get; set; }
-    public List<Leg> legs { get; set; }
+    public int PlannedDurationInMinutes { get; set; }
+    public int ActualDurationInMinutes { get; set; }
+    public int Transfers { get; set; }
+    public string Status { get; set; }
+    public List<Leg> Legs { get; set; }
 }
 
 public class Leg
 {
-    public Origin origin { get; set; }
-    public Destination destination { get; set; }
+    public Origin Origin { get; set; }
+    public Destination Destination { get; set; }
 }
 
 public class Origin
 {
-    public DateTime plannedDateTime { get; set; }
-    public DateTime actualDateTime { get; set; }
+    public DateTime PlannedDateTime { get; set; }
+    public DateTime ActualDateTime { get; set; }
 }
 
 public class Destination
 {
-    public DateTime plannedDateTime { get; set; }
-    public DateTime actualDateTime { get; set; }
+    public DateTime PlannedDateTime { get; set; }
+    public DateTime ActualDateTime { get; set; }
 }

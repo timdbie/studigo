@@ -13,31 +13,32 @@
     <div class="banner_content">
         <div class="banner_planner">
             <h1>Plan je reis</h1>
-            <form class="planner">
+            <form class="planner" method="get">
+                <input type="hidden" name="handler" value="Trips"/>
                 <div class="planner_search">
                     <div class="stations_search">
                         <label>van</label>
-                        <input type="text" name="from" autocomplete="off" placeholder="station of stad" required/>
+                        <input type="text" name="fromStation" autocomplete="off" placeholder="station of stad" required/>
                         <div class="stations_results"></div>
                     </div>
-                    
+
                     <div class="planner_switch"></div>
-                    
+
                     <div class="stations_search">
                         <label>naar</label>
-                        <input type="text" name="to" autocomplete="off" placeholder="station of stad" required/>
+                        <input type="text" name="toStation" autocomplete="off" placeholder="station of stad" required/>
                         <div class="stations_results"></div>
                     </div>
                 </div>
                 <div class="planner_buttons">
                     <div class="planner_date">
-                        <input type="date" required/>
+                        <input name="date" type="date" required/>
                     </div>
 
                     <div class="planner_time">
-                        <input type="time" required/>
+                        <input name="time" type="time" required/>
                     </div>
-                    
+
                     <input type="submit" value="Submit"/>
                 </div>
             </form>
@@ -48,5 +49,15 @@
 </div>
 
 <div class="trips">
-    <div class="trips_results"></div>
+    <div class="trips_results">
+        @if (Model.Trips != null)
+        {
+        <div class="trips_results">
+            @foreach (var trip in Model.Trips.trips)
+            {
+                <div>@trip.Legs[0].Origin.PlannedDateTime</div>
+            }
+        </div>
+        }
+    </div>
 </div>
