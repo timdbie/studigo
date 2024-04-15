@@ -49,15 +49,14 @@
 </div>
 
 <div class="trips">
-    <div class="trips_results">
-        @if (Model.Trips != null)
-        {
+    <div class="trips_content">
         <div class="trips_results">
             @foreach (var trip in Model.Trips.trips)
             {
-                <div>@trip.Legs[0].Origin.PlannedDateTime</div>
+                <div class="trips_result">
+                    @trip.Legs[0].Origin.PlannedDateTime
+                </div>
             }
         </div>
-        }
     </div>
 </div>
