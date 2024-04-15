@@ -7,10 +7,12 @@ namespace StudiGO.Pages;
 public class IndexModel : PageModel
 {
     private readonly StationsService _stationsService;
+    private readonly TripsService _tripsService;
 
-    public IndexModel(StationsService stationsService)
+    public IndexModel(StationsService stationsService, TripsService tripsService)
     {
         _stationsService = stationsService;
+        _tripsService = tripsService;
     }
     
     public async Task<IActionResult> OnGetStationsAsync(string query)
@@ -23,5 +25,10 @@ public class IndexModel : PageModel
         
         return BadRequest("Invalid query.");
     }
-
+    
+    public async Task<IActionResult> OnGetTripsAsync(string fromStation, string toStation, string dateTime)
+    {
+        var tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
+        return new JsonResult(tripsDto);
+    }
 }

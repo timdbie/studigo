@@ -12,9 +12,9 @@ public class TripsService
         _tripsRepository = tripsRepository;
     }
     
-    public async Task<TripsDto> GetTripsAsync(string from, string to, string datetime)
+    public async Task<TripsDto> GetTripsAsync(string fromStation, string toStation, string dateTime)
     {
-        var tripsDto = await _tripsRepository.GetTripsAsync(from, to, datetime);
+        var tripsDto = await _tripsRepository.GetTripsAsync(fromStation, toStation, dateTime);
         
         return tripsDto;
     }
