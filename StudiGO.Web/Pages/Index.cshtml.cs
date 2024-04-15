@@ -18,13 +18,10 @@ public class IndexModel : PageModel
     
     public TripsDto Trips { get; private set; }
     
-    public async Task<IActionResult> OnGetAsync(string fromStation, string toStation, string date, string time)
+    public async Task<IActionResult> OnGetTripsAsync(string fromStation, string toStation, string date, string time)
     {
-        if (Request.Method == "GET" && !string.IsNullOrEmpty(fromStation) && !string.IsNullOrEmpty(toStation) && !string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(time))
-        {
-            string dateTime = date + "T" + time;
-            Trips = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
-        }
+        string dateTime = date + "T" + time;
+        Trips = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
     
         return Page();
     }
