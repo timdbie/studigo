@@ -3,7 +3,7 @@ using StudiGO.Core.Interfaces;
 
 namespace StudiGO.DAL.Repositories;
 
-public class TripsRepository : ApiBaseRepository
+public class TripsRepository : ApiBaseRepository, ITripsRepository
 {
     public async Task<TripsDto> GetTripsAsync(string fromStation, string toStation, string dateTime)
     {
