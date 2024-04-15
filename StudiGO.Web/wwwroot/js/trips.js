@@ -1,14 +1,22 @@
 ﻿async function getTrips(formData) {
     try {
-        const response = await $.ajax({
+        const data = await $.ajax({
             url: "?handler=Trips",
             type: "GET",
             data: formData
         });
-        console.log(response);
+        console.log(data.trips);
+        getTripResults(data.trips);
     } catch (error) {
         console.error("Failed to fetch trips:", error);
     }
+}
+
+async function getTripResults(trips) {
+    trips.forEach((trip) => {
+        var tripResult = $("<div>").text(trip.legs[0].origin.plannedDateTime);
+        $(".trips_results").append(tripResult);
+    });
 }
 
 $(".planner").submit(async function(event) {
