@@ -17,7 +17,7 @@
                 <div class="planner_search">
                     <div class="stations_search">
                         <label>van</label>
-                        <input type="text" name="from" autocomplete="off" placeholder="station of stad"/>
+                        <input type="text" name="from" autocomplete="off" placeholder="station of stad" required/>
                         <div class="stations_results"></div>
                     </div>
                     
@@ -25,17 +25,17 @@
                     
                     <div class="stations_search">
                         <label>naar</label>
-                        <input type="text" name="to" autocomplete="off" placeholder="station of stad"/>
+                        <input type="text" name="to" autocomplete="off" placeholder="station of stad" required/>
                         <div class="stations_results"></div>
                     </div>
                 </div>
                 <div class="planner_buttons">
                     <div class="planner_date">
-                        <input id="date" type="date"/>
+                        <input type="date" required/>
                     </div>
 
                     <div class="planner_time">
-                        <input id="time" type="time"/>
+                        <input type="time" required/>
                     </div>
                     
                     <input id="datetime" name="datetime" type="hidden"/>
