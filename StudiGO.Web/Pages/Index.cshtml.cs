@@ -16,12 +16,13 @@ public class IndexModel : PageModel
         _tripsService = tripsService;
     }
     
-    public TripsDto Trips { get; private set; }
+    public List<Trip> Trips { get; private set; }
     
     public async Task<IActionResult> OnGetTripsAsync(string fromStation, string toStation, string date, string time)
     {
         string dateTime = date + "T" + time;
-        Trips = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
+        TripsDto tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
+        Trips = tripsDto.trips;
     
         return Page();
     }
