@@ -59,10 +59,10 @@
                             <div class="trips_times">
                                 <span class="trips_timespan">@trip.Legs[0].Origin.PlannedDateTime.ToString("HH:mm")</span>
                                 <span>></span>
-                                <span class="trips_timespan">@trip.Legs[^1].Origin.PlannedDateTime.ToString("HH:mm")</span>
+                                <span class="trips_timespan">@trip.Legs[^1].Destination.PlannedDateTime.ToString("HH:mm")</span>
                             </div>
                             <div class="trip_info">
-                                <span>@trip.PlannedDurationInMinutes</span>
+                                <span>@TimeSpan.FromMinutes(trip.PlannedDurationInMinutes).ToString(@"hh\:mm")</span>
                                 <span>@trip.Transfers</span>
                             </div>
                         </div>
