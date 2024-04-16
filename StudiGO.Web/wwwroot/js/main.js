@@ -1,5 +1,9 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const now = new Date();
+const localDate = now.toISOString().split('T')[0];
+const localTime = now.toLocaleTimeString('en', {hour12: false, hour: '2-digit', minute: '2-digit'});
+
+$('.planner_date input').val(localDate);
+$('.planner_time input').val(localTime);
 
 $(".banner_tabs div").on("click", function() {
     if(!$(this).hasClass("banner_tabs-selected")) {
@@ -12,4 +16,3 @@ $(".banner_tabs div").on("click", function() {
     }
 });
 
-// Write your JavaScript code.

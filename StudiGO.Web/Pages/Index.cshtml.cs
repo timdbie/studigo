@@ -1,16 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudiGO.Core.Services;
+using StudiGO.Core.DTOs;
 
 namespace StudiGO.Pages;
 
 public class IndexModel : PageModel
 {
     private readonly StationsService _stationsService;
+    private readonly TripsService _tripsService;
 
-    public IndexModel(StationsService stationsService)
+    public IndexModel(StationsService stationsService, TripsService tripsService)
     {
         _stationsService = stationsService;
+        _tripsService = tripsService;
+    }
+    
+    public TripsDto Trips { get; private set; }
+    
+    public async Task<IActionResult> OnGetTripsAsync(string fromStation, string toStation, string date, string time)
+    {
+        string dateTime = date + "T" + time;
+        Trips = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
+    
+        return Page();
     }
     
     public async Task<IActionResult> OnGetStationsAsync(string query)
@@ -23,5 +36,4 @@ public class IndexModel : PageModel
         
         return BadRequest("Invalid query.");
     }
-
 }

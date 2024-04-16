@@ -13,25 +13,50 @@
     <div class="banner_content">
         <div class="banner_planner">
             <h1>Plan je reis</h1>
-            <div class="planner">
+            <form class="planner" method="get">
+                <input type="hidden" name="handler" value="Trips" />
                 <div class="planner_search">
                     <div class="stations_search">
-                        <label for="from">van</label>
-                        <input id="from" type="text" name="query" autocomplete="off" placeholder="station of stad"/>
+                        <label>van</label>
+                        <input type="text" name="fromStation" autocomplete="off" placeholder="station of stad" required/>
                         <div class="stations_results"></div>
                     </div>
-                    
+
                     <div class="planner_switch"></div>
-                    
+
                     <div class="stations_search">
-                        <label for="from">naar</label>
-                        <input type="text" name="query" autocomplete="off" placeholder="station of stad"/>
+                        <label>naar</label>
+                        <input type="text" name="toStation" autocomplete="off" placeholder="station of stad" required/>
                         <div class="stations_results"></div>
                     </div>
                 </div>
-            </div>
+                <div class="planner_buttons">
+                    <div class="planner_date">
+                        <input name="date" type="date" required/>
+                    </div>
+
+                    <div class="planner_time">
+                        <input name="time" type="time" required/>
+                    </div>
+
+                    <input type="submit" value="Submit"/>
+                </div>
+            </form>
         </div>
         
         <div class="banner_schedule"></div>
+    </div>
+</div>
+
+<div class="trips">
+    <div class="trips_content">
+        <div class="trips_results">
+            @foreach (var trip in Model.Trips.trips)
+            {
+                <div class="trips_result">
+                    @trip.Legs[0].Origin.PlannedDateTime
+                </div>
+            }
+        </div>
     </div>
 </div>

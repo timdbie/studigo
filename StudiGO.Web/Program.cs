@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<StationsService>();
 builder.Services.AddScoped<IStationsRepository, StationsRepository>();
+builder.Services.AddScoped<TripsService>();
+builder.Services.AddScoped<ITripsRepository, TripsRepository>();
 
 // SASS watcher
 #if DEBUG
