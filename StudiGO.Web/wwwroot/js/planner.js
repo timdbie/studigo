@@ -5,7 +5,6 @@ $("#fromStation").val(fromStationSession);
 $("#toStation").val(toStationSession);
 
 $(".planner").submit(function(event) {
-    console.log("test");
     fromStationSession = $("#fromStation").val();
     toStationSession = $("#toStation").val();
     
