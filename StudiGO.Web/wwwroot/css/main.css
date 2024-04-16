@@ -79,6 +79,7 @@
   border-radius: 55px;
   background-color: darkgray;
   margin: 0 20px;
+  cursor: pointer;
 }
 
 .trips {

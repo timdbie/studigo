@@ -1,16 +1,25 @@
-var fromStation = sessionStorage.getItem("fromStation");
-var toStation = sessionStorage.getItem("toStation");
+var fromStationSession = sessionStorage.getItem("fromStation");
+var toStationSession = sessionStorage.getItem("toStation");
 
-$("#fromStation").val(fromStation);
-$("#toStation").val(toStation);
+$("#fromStation").val(fromStationSession);
+$("#toStation").val(toStationSession);
 
 $(".planner").submit(function(event) {
     console.log("test");
-    fromStation = $("#fromStation").val();
-    toStation = $("#toStation").val();
+    fromStationSession = $("#fromStation").val();
+    toStationSession = $("#toStation").val();
     
-    sessionStorage.setItem("fromStation", fromStation)
-    sessionStorage.setItem("toStation", toStation)
+    sessionStorage.setItem("fromStation", fromStationSession)
+    sessionStorage.setItem("toStation", toStationSession)
     
     return true;
+})
+
+$(".planner_switch").on("click", function() {
+    var fromStation = $("#fromStation");
+    var toStation = $("#toStation");
+
+    var [fromValue, toValue] = [fromStation.val(), toStation.val()];
+    fromStation.val(toValue);
+    toStation.val(fromValue);
 })
