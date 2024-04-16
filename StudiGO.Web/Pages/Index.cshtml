@@ -18,7 +18,7 @@
                 <div class="planner_search">
                     <div class="stations_search">
                         <label>van</label>
-                        <input type="text" name="fromStation" autocomplete="off" placeholder="station of stad" required/>
+                        <input type="text" id="fromStation" name="fromStation" autocomplete="off" placeholder="station of stad" required/>
                         <div class="stations_results"></div>
                     </div>
 
@@ -26,7 +26,7 @@
 
                     <div class="stations_search">
                         <label>naar</label>
-                        <input type="text" name="toStation" autocomplete="off" placeholder="station of stad" required/>
+                        <input type="text" id="toStation" name="toStation" autocomplete="off" placeholder="station of stad" required/>
                         <div class="stations_results"></div>
                     </div>
                 </div>
@@ -51,12 +51,23 @@
 <div class="trips">
     <div class="trips_content">
         <div class="trips_results">
-            @foreach (var trip in Model.Trips.trips)
-            {
-                <div class="trips_result">
-                    @trip.Legs[0].Origin.PlannedDateTime
-                </div>
-            }
+            @if (Model.Trips != null) {
+                @foreach (var trip in Model.Trips)
+                {
+                    <div class="trips_result">
+                        <div class="trips_row">
+                            <div class="trips_times">
+                                <span class="trips_timespan">@trip.Legs[0].Origin.PlannedDateTime.ToString("HH:mm")</span>
+                                <span>></span>
+                                <span class="trips_timespan">@trip.Legs[^1].Destination.PlannedDateTime.ToString("HH:mm")</span>
+                            </div>
+                            <div class="trip_info">
+                                <span>@TimeSpan.FromMinutes(trip.PlannedDurationInMinutes).ToString(@"hh\:mm")</span>
+                                <span>@trip.Transfers</span>
+                            </div>
+                        </div>
+                    </div>
+                }}
         </div>
     </div>
 </div>
