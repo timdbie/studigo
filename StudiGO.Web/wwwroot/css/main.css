@@ -102,6 +102,20 @@
   background-color: white;
   margin-bottom: 20px;
   border-radius: 4px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.trips .trips_content .trips_results .trips_result .trips_row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.trips .trips_content .trips_results .trips_result .trips_row .trips_times .trips_timespan {
+  font-size: 16px;
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=main.css.map */
