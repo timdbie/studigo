@@ -69,5 +69,29 @@
                     </div>
                 }}
         </div>
+        
+        <div class="trips_details">
+            <div class="trips_title">
+                Reisadvies
+            </div>
+            <div class="trips_legs">
+                @if (Model.Trips[0].Legs != null) {
+                    @foreach (var leg in Model.Trips[0].Legs)
+                    {
+                        <div class="trips_leg">
+                            <div class="trips_legtimes">
+                                <span>@leg.Origin.PlannedDateTime.ToString("HH:mm")</span>
+                                <span>@leg.Destination.PlannedDateTime.ToString("HH:mm")</span>
+                            </div>
+                            <div class="trips_graphic">
+                                <div class="trips_pin"></div>
+                                <div class="trips_line"></div>
+                                <div class="trips_pin"></div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
     </div>
 </div>
