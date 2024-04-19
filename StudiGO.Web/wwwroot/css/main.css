@@ -143,7 +143,6 @@
   width: 100%;
   height: 200px;
   display: flex;
-  padding-bottom: 40px;
 }
 .trips .trips_content .trips_details .trips_legs .trips_leg .trips_legtimes {
   width: 100px;
@@ -186,6 +185,29 @@
   height: 100%;
   position: absolute;
   background-color: black;
+}
+.trips .trips_content .trips_details .trips_legs .trips_transfer {
+  width: 100%;
+  height: 80px;
+  display: flex;
+}
+.trips .trips_content .trips_details .trips_legs .trips_transfer .trips_transfer_icon {
+  width: 100px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.trips .trips_content .trips_details .trips_legs .trips_transfer .trips_transfer_graphic {
+  width: 13px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.trips .trips_content .trips_details .trips_legs .trips_transfer .trips_transfer_graphic div {
+  width: 3px;
+  height: 100%;
+  background-color: gray;
 }
 
 /*# sourceMappingURL=main.css.map */

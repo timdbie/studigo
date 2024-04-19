@@ -75,7 +75,7 @@
                 Reisadvies
             </div>
             <div class="trips_legs">
-                @if (Model.Trips[0].Legs != null) {
+                @if (Model.Trips != null) {
                     @foreach (var leg in Model.Trips[0].Legs)
                     {
                         <div class="trips_leg">
@@ -89,6 +89,18 @@
                                 <div class="trips_pin"></div>
                             </div>
                         </div>
+                        
+                        @if (leg != Model.Trips[0].Legs.Last())
+                        {
+                            <div class="trips_transfer">
+                                <div class="trips_transfer_icon">
+                                    
+                                </div>
+                                <div class="trips_transfer_graphic">
+                                    <div></div>
+                                </div>
+                            </div>
+                        }
                     }
                 }
             </div>
