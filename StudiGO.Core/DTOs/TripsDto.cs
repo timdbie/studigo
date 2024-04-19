@@ -41,7 +41,7 @@ public class Destination
 
 public class Product
 {
-    public List<Note> Notes { get; set; }
+    public List<List<Note>> Notes { get; set; }
     public List<TransferMessage> TransferMessages { get; set; }
 }
 
