@@ -143,7 +143,7 @@
 }
 .trips .trips_content .trips_details .trips_legs .trips_leg {
   width: 100%;
-  height: 200px;
+  height: 160px;
   display: flex;
 }
 .trips .trips_content .trips_details .trips_legs .trips_leg .trips_times {
