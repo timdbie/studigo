@@ -151,7 +151,7 @@ $default_fontsize: 14px
           height: 200px
           display: flex
           
-          .trips_legtimes
+          .trips_times
             width: 100px
             height: 100%
             display: flex
@@ -192,7 +192,33 @@ $default_fontsize: 14px
               height: 100%
               position: absolute
               background-color: black
-        
+          
+          .trips_info
+            flex: 1
+            display: flex
+            justify-content: space-between
+            flex-direction: column
+            padding: 0 30px
+            
+            .trips_station
+              font-size: 18px
+              font-weight: 600
+              position: relative
+              &:nth-child(1)
+                top: -5px
+              &:nth-child(3)
+                bottom: -5px
+                
+            .trips_notes
+              flex: 1
+              display: flex
+              justify-content: center
+              flex-direction: column
+              border-top: 1px solid lightgray
+              border-bottom: 1px solid lightgray
+              margin: 20px 0
+              font-size: $default_fontsize
+              
         .trips_transfer
           width: 100%
           height: 80px
@@ -215,4 +241,12 @@ $default_fontsize: 14px
               width: 3px
               height: 100%
               background-color: gray
-                
+          
+          .trips_transfer_info
+            flex: 1
+            display: flex
+            justify-content: center
+            flex-direction: column
+            margin: 20px 0
+            font-size: $default_fontsize
+            padding: 0 30px

@@ -144,7 +144,7 @@
   height: 200px;
   display: flex;
 }
-.trips .trips_content .trips_details .trips_legs .trips_leg .trips_legtimes {
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times {
   width: 100px;
   height: 100%;
   display: flex;
@@ -152,15 +152,15 @@
   align-items: center;
   flex-direction: column;
 }
-.trips .trips_content .trips_details .trips_legs .trips_leg .trips_legtimes span {
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times span {
   font-size: 18px;
   font-weight: 600;
 }
-.trips .trips_content .trips_details .trips_legs .trips_leg .trips_legtimes span:nth-child(1) {
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times span:nth-child(1) {
   position: relative;
   top: -5px;
 }
-.trips .trips_content .trips_details .trips_legs .trips_leg .trips_legtimes span:nth-child(2) {
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times span:nth-child(2) {
   position: relative;
   bottom: -5px;
 }
@@ -186,6 +186,34 @@
   position: absolute;
   background-color: black;
 }
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 0 30px;
+}
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_info .trips_station {
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+}
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_info .trips_station:nth-child(1) {
+  top: -5px;
+}
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_info .trips_station:nth-child(3) {
+  bottom: -5px;
+}
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_info .trips_notes {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  margin: 20px 0;
+  font-size: 14px;
+}
 .trips .trips_content .trips_details .trips_legs .trips_transfer {
   width: 100%;
   height: 80px;
@@ -208,6 +236,15 @@
   width: 3px;
   height: 100%;
   background-color: gray;
+}
+.trips .trips_content .trips_details .trips_legs .trips_transfer .trips_transfer_info {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px 0;
+  font-size: 14px;
+  padding: 0 30px;
 }
 
 /*# sourceMappingURL=main.css.map */

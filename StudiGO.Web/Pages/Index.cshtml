@@ -93,7 +93,7 @@
                             </div>
                         }
                         <div class="trips_leg">
-                            <div class="trips_legtimes">
+                            <div class="trips_times">
                                 <span>@leg.Origin.PlannedDateTime.ToString("HH:mm")</span>
                                 <span>@leg.Destination.PlannedDateTime.ToString("HH:mm")</span>
                             </div>
@@ -101,6 +101,16 @@
                                 <div class="trips_pin"></div>
                                 <div class="trips_line"></div>
                                 <div class="trips_pin"></div>
+                            </div>
+                            <div class="trips_info">
+                                <span class="trips_station">@leg.Origin.Name</span>
+                                <div class="trips_notes">
+                                    @foreach (var note in leg.Product.Notes)
+                                    {
+                                        <span>@note[0].Value</span>
+                                    }
+                                </div>
+                                <span class="trips_station">@leg.Destination.Name</span>
                             </div>
                         </div>
                     }
