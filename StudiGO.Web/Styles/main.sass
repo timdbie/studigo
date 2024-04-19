@@ -89,7 +89,6 @@ $default_fontsize: 14px
             
 .trips
   width: 100%
-  min-height: 400px
   display: flex
   justify-content: center
 
@@ -129,9 +128,10 @@ $default_fontsize: 14px
     .trips_details
       width: 50%
       background-color: white
-      margin-bottom: 20px
-      border-radius: 4px
       margin-left: 10px
+      border-radius: 4px
+      height: fit-content
+      padding-bottom: 30px
       
       .trips_title
         width: 100%
@@ -141,6 +141,8 @@ $default_fontsize: 14px
         display: flex
         align-items: center
         font-weight: 600
+        margin-bottom: 30px
+        border-bottom: 1px solid lightgray
         
       .trips_legs
         width: 100%
@@ -201,13 +203,25 @@ $default_fontsize: 14px
             padding: 0 30px
             
             .trips_station
+              width: 100%
+              display: flex
+              justify-content: space-between
+              align-items: center
               font-size: 18px
               font-weight: 600
               position: relative
+              
+              .trips_track
+                font-size: 14px
+                font-weight: normal
+                text-transform: uppercase
+                color: lightgray
+              
               &:nth-child(1)
                 top: -5px
               &:nth-child(3)
                 bottom: -5px
+                
                 
             .trips_notes
               flex: 1

@@ -84,7 +84,6 @@
 
 .trips {
   width: 100%;
-  min-height: 400px;
   display: flex;
   justify-content: center;
 }
@@ -122,9 +121,10 @@
 .trips .trips_content .trips_details {
   width: 50%;
   background-color: white;
-  margin-bottom: 20px;
-  border-radius: 4px;
   margin-left: 10px;
+  border-radius: 4px;
+  height: fit-content;
+  padding-bottom: 30px;
 }
 .trips .trips_content .trips_details .trips_title {
   width: 100%;
@@ -134,6 +134,8 @@
   display: flex;
   align-items: center;
   font-weight: 600;
+  margin-bottom: 30px;
+  border-bottom: 1px solid lightgray;
 }
 .trips .trips_content .trips_details .trips_legs {
   width: 100%;
@@ -194,9 +196,19 @@
   padding: 0 30px;
 }
 .trips .trips_content .trips_details .trips_legs .trips_leg .trips_info .trips_station {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 18px;
   font-weight: 600;
   position: relative;
+}
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_info .trips_station .trips_track {
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: lightgray;
 }
 .trips .trips_content .trips_details .trips_legs .trips_leg .trips_info .trips_station:nth-child(1) {
   top: -5px;
