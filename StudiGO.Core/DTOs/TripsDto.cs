@@ -19,6 +19,8 @@ public class Leg
     public Origin Origin { get; set; }
     public Destination Destination { get; set; }
     public Product Product { get; set; }
+    
+    public List<TransferMessage> TransferMessages { get; set; }
 }
 
 public class Origin
@@ -42,7 +44,6 @@ public class Destination
 public class Product
 {
     public List<List<Note>> Notes { get; set; }
-    public List<TransferMessage> TransferMessages { get; set; }
 }
 
 public class Note

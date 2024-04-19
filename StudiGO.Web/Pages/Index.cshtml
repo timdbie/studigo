@@ -78,7 +78,7 @@
                 @if (Model.Trips != null) {
                     @foreach (var leg in Model.Trips[0].Legs)
                     {
-                        @if (leg != Model.Trips[0].Legs.First())
+                        @if (leg.TransferMessages != null)
                         {
                             <div class="trips_transfer">
                                 <div class="trips_transfer_icon">
@@ -86,6 +86,9 @@
                                 </div>
                                 <div class="trips_transfer_graphic">
                                     <div></div>
+                                </div>
+                                <div class="trips_transfer_info">
+                                    <div>@leg.TransferMessages[0].Message</div>
                                 </div>
                             </div>
                         }
