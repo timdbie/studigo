@@ -89,6 +89,7 @@
 }
 .trips .trips_content {
   width: 100%;
+  min-height: 400px;
   max-width: 1120px;
   padding: 20px;
   display: flex;

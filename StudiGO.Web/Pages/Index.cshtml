@@ -50,8 +50,9 @@
 
 <div class="trips">
     <div class="trips_content">
-        <div class="trips_results">
-            @if (Model.Trips != null) {
+        @if (Model.Trips != null)
+        {
+            <div class="trips_results">
                 @foreach (var trip in Model.Trips)
                 {
                     <div class="trips_result">
@@ -67,22 +68,20 @@
                             </div>
                         </div>
                     </div>
-                }}
-        </div>
-        
-        <div class="trips_details">
-            <div class="trips_title">
-                Reisadvies
+                }
             </div>
-            <div class="trips_legs">
-                @if (Model.Trips != null) {
+            <div class="trips_details">
+                <div class="trips_title">
+                    Reisadvies
+                </div>
+                <div class="trips_legs">
                     @foreach (var leg in Model.Trips[0].Legs)
                     {
                         @if (leg.TransferMessages != null)
                         {
                             <div class="trips_transfer">
                                 <div class="trips_transfer_icon">
-                                    
+
                                 </div>
                                 <div class="trips_transfer_graphic">
                                     <div></div>
@@ -92,6 +91,7 @@
                                 </div>
                             </div>
                         }
+
                         <div class="trips_leg">
                             <div class="trips_times">
                                 <span>@leg.Origin.PlannedDateTime.ToString("HH:mm")</span>
@@ -120,8 +120,9 @@
                             </div>
                         </div>
                     }
-                }
+
+                </div>
             </div>
-        </div>
+        }
     </div>
 </div>
