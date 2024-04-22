@@ -3,5 +3,5 @@
     var hours = date.getHours();
     var minutes = date.getMinutes();
 
-    return hours + ":" + minutes;
+    return `${hours}:${minutes.toString().padStart(2, '0')}`;
 }
