@@ -25,33 +25,10 @@ public class IndexModel : PageModel
         string dateTime = date + "T" + time;
         
         TripsDto tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
-        _trips = tripsDto.trips;
-
-        Trips = new List<TripViewModel>();
-
-        foreach (var trip in _trips)
-        {
-            string plannedDuration = @TimeSpan.FromMinutes(trip.PlannedDurationInMinutes).ToString(@"hh\:mm");
-            string actualDuration = @TimeSpan.FromMinutes(trip.ActualDurationInMinutes).ToString(@"hh\:mm");
-            string plannedDepartureTime = trip.Legs[0].Origin.PlannedDateTime.ToString("HH:mm");
-            string plannedArrivalTime = trip.Legs[^1].Destination.PlannedDateTime.ToString("HH:mm");
-            int transfers = trip.Transfers;
-
-            var tripViewModel = new TripViewModel
-            {
-                PlannedDuration = plannedDuration,
-                ActualDuration = actualDuration,
-                PlannedDepartureTime = plannedDepartureTime,
-                PlannedArrivalTime = plannedArrivalTime,
-                Transfers =  transfers,
-            };
-            
-            Trips.Add(tripViewModel);
-        }
+        Trips = TripViewModel.MapTripViewModels(tripsDto);
 
         return Page();
     }
-    
     
     public async Task<IActionResult> OnGetStationsAsync(string query)
     {
