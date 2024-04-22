@@ -26,7 +26,12 @@ public class IndexModel : PageModel
         
         _tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
         
-        Trips = TripViewModel.FromDto(_tripsDto);
+        Trips = new List<TripViewModel>();
+        foreach (var trip in _tripsDto.Trips)
+        {
+            TripViewModel tripViewModel = TripViewModel.FromDto(trip);
+            Trips.Add(tripViewModel);
+        }
 
         return Page();
     }

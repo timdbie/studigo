@@ -2,7 +2,7 @@
 
 public class TripsDto
 {
-    public List<Trip> trips { get; set;}
+    public List<Trip> Trips { get; set;}
 }
 
 public class Trip

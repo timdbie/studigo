@@ -31,7 +31,7 @@ namespace StudiGO.Models
 
         public static TripDetailsViewModel FromDto(TripsDto tripsDto, int tripId)
         {
-            var trip = tripsDto.trips[tripId];
+            var trip = tripsDto.Trips[tripId];
 
             TripDetailsViewModel tripDetailsViewModel = new TripDetailsViewModel
             {
