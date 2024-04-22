@@ -1,4 +1,5 @@
 ﻿@page
+@using Newtonsoft.Json
 @model IndexModel
 
 <div class="banner">
@@ -55,7 +56,7 @@
             <div class="trips_results">
                 @foreach (var trip in Model.Trips)
                 {
-                    <div class="trips_result">
+                    <div class="trips_result" data-trip="@JsonConvert.SerializeObject(trip)">
                         <div class="trips_row">
                             <div class="trips_times">
                                 <span class="trips_timespan">@trip.Legs[0].Origin.PlannedDateTime.ToString("HH:mm")</span>
@@ -71,56 +72,9 @@
                 }
             </div>
             <div class="trips_details">
-                <div class="trips_title">
-                    Reisadvies
-                </div>
+                <div class="trips_title">Reisadvies</div>
                 <div class="trips_legs">
-                    @foreach (var leg in Model.Trips[0].Legs)
-                    {
-                        @if (leg.TransferMessages != null)
-                        {
-                            <div class="trips_transfer">
-                                <div class="trips_transfer_icon">
-
-                                </div>
-                                <div class="trips_transfer_graphic">
-                                    <div></div>
-                                </div>
-                                <div class="trips_transfer_info">
-                                    <div>@leg.TransferMessages[0].Message</div>
-                                </div>
-                            </div>
-                        }
-
-                        <div class="trips_leg">
-                            <div class="trips_times">
-                                <span>@leg.Origin.PlannedDateTime.ToString("HH:mm")</span>
-                                <span>@leg.Destination.PlannedDateTime.ToString("HH:mm")</span>
-                            </div>
-                            <div class="trips_graphic">
-                                <div class="trips_pin"></div>
-                                <div class="trips_line"></div>
-                                <div class="trips_pin"></div>
-                            </div>
-                            <div class="trips_info">
-                                <div class="trips_station">
-                                    <span>@leg.Origin.Name</span>
-                                    <span class="trips_track">Spoor @leg.Origin.PlannedTrack</span>
-                                </div>
-                                <div class="trips_notes">
-                                    @foreach (var note in leg.Product.Notes)
-                                    {
-                                        <span>@note[0].Value</span>
-                                    }
-                                </div>
-                                <div class="trips_station">
-                                    <span>@leg.Destination.Name</span>
-                                    <span class="trips_track">Spoor @leg.Destination.PlannedTrack</span>
-                                </div>
-                            </div>
-                        </div>
-                    }
-
+                    
                 </div>
             </div>
         }
