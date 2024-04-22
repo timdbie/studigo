@@ -17,17 +17,24 @@ public class IndexModel : PageModel
         _tripsService = tripsService;
     }
 
-    private List<Trip> _trips { get; set; }
+    private TripsDto _tripsDto { get; set; }
     public List<TripViewModel> Trips { get; private set; }
 
     public async Task<IActionResult> OnGetTripsAsync(string fromStation, string toStation, string date, string time)
     {
         string dateTime = date + "T" + time;
         
-        TripsDto tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
-        Trips = TripViewModel.MapTripViewModels(tripsDto);
+        _tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
+        
+        Trips = TripViewModel.FromDto(_tripsDto);
 
         return Page();
+    }
+    
+    public async Task<IActionResult> OnGetTripDetailsAsync(int tripId)
+    {
+        TripDetailsViewModel tripDetails = TripDetailsViewModel.FromDto(_tripsDto, tripId);
+        return new JsonResult(tripDetails);
     }
     
     public async Task<IActionResult> OnGetStationsAsync(string query)
