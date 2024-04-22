@@ -1,6 +1,6 @@
-﻿$('.trips_result').click(function() {
+﻿$(".trips_result").click(function() {
     console.log($(this).data("trip"));
-    var trip = $(this).data('trip');
+    var trip = $(this).data("trip");
     var tripLegs = $(".trips_legs");
     tripLegs.empty();
     
@@ -25,7 +25,7 @@ function createTransfer(message) {
 }
 
 function createNotes(notes) {
-    let notesElement = '';
+    let notesElement = "";
     $.each(notes, function(index, note) {
         notesElement += `<span>${note[0].Value}</span>`;
     });
