@@ -1,5 +1,5 @@
 var now = new Date();
-var localDate = now.toISOString().split('T')[0];
+var localDate = formatDate(now);
 var localTime = formatTime(now);
 
 var fromStationSession = sessionStorage.getItem("fromStation");
