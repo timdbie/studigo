@@ -27,8 +27,8 @@ function createTransferMessage(message) {
 function createLegDetails(leg) {
     return `<div class="trips_leg">
                 <div class="trips_times">
-                    <span>${leg.Origin.PlannedDateTime}</span>
-                    <span>${leg.Destination.PlannedDateTime}</span>
+                    <span>${formatTime(leg.Origin.PlannedDateTime)}</span>
+                    <span>${formatTime(leg.Destination.PlannedDateTime)}</span>
                 </div>
                 <div class="trips_graphic">
                     <div class="trips_pin"></div>
