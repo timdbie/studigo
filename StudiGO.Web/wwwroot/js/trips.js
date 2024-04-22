@@ -6,13 +6,13 @@
     
     $.each(trip.Legs, function(index, leg) {
         if (leg.TransferMessages != null) {
-            tripLegs.append(createTransferMessage(leg.TransferMessages[0].Message));
+            tripLegs.append(createTransfer(leg.TransferMessages[0].Message));
         }
-        tripLegs.append(createLegDetails(leg));
+        tripLegs.append(createLeg(leg));
     });
 });
 
-function createTransferMessage(message) {
+function createTransfer(message) {
     return `<div class="trips_transfer">
                 <div class="trips_transfer_icon"></div>
                 <div class="trips_transfer_graphic">
@@ -24,7 +24,16 @@ function createTransferMessage(message) {
             </div>`
 }
 
-function createLegDetails(leg) {
+function createNotes(notes) {
+    let notesElement = '';
+    $.each(notes, function(index, note) {
+        notesElement += `<span>${note[0].Value}</span>`;
+    });
+    
+    return notesElement;
+}
+
+function createLeg(leg) {
     return `<div class="trips_leg">
                 <div class="trips_times">
                     <span>${formatTime(leg.Origin.PlannedDateTime)}</span>
@@ -41,10 +50,7 @@ function createLegDetails(leg) {
                         <span class="trips_track">Spoor ${leg.Origin.PlannedTrack}</span>
                     </div>
                     <div class="trips_notes">
-                        @foreach (var note in leg.Product.Notes)
-                        {
-                            <span>@note[0].Value</span>
-                        }
+                        ${createNotes(leg.Product.Notes)}
                     </div>
                     <div class="trips_station">
                         <span>${leg.Destination.Name}</span>
