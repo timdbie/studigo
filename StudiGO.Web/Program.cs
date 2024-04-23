@@ -10,6 +10,8 @@ builder.Services.AddScoped<StationsService>();
 builder.Services.AddScoped<IStationsRepository, StationsRepository>();
 builder.Services.AddScoped<TripsService>();
 builder.Services.AddScoped<ITripsRepository, TripsRepository>();
+builder.Services.AddScoped<SingleTripService>();
+builder.Services.AddScoped<ISingleTripRepository, SingleTripRepository>();
 
 // SASS watcher
 #if DEBUG

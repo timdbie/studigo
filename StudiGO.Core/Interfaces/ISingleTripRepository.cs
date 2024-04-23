@@ -1,6 +1,9 @@
-﻿namespace StudiGO.Core.Interfaces;
+﻿using StudiGO.Core.DTOs;
 
-public interface ISingleTripRepository
+namespace StudiGO.Core.Interfaces
 {
-    
+    public interface ISingleTripRepository
+    {
+        Task<SingleTripDto> GetTripAsync(string ctxRecon);
+    }
 }
