@@ -10,11 +10,13 @@ public class IndexModel : PageModel
 {
     private readonly StationsService _stationsService;
     private readonly TripsService _tripsService;
+    private readonly SingleTripService _singleTripService;
 
-    public IndexModel(StationsService stationsService, TripsService tripsService)
+    public IndexModel(StationsService stationsService, TripsService tripsService, SingleTripService singleTripService)
     {
         _stationsService = stationsService;
         _tripsService = tripsService;
+        _singleTripService = singleTripService;
     }
 
     private TripsDto _tripsDto { get; set; }
@@ -34,6 +36,12 @@ public class IndexModel : PageModel
         }
 
         return Page();
+    }
+    
+    public async Task<IActionResult> OnGetTripDetailsAsync(string ctxRecon)
+    {
+        var singleTripDto = await _singleTripService.GetSingleTripAsync(ctxRecon);
+        return new JsonResult(singleTripDto);
     }
     
     public async Task<IActionResult> OnGetStationsAsync(string query)
