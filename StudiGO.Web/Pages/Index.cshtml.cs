@@ -36,12 +36,6 @@ public class IndexModel : PageModel
         return Page();
     }
     
-    public async Task<IActionResult> OnGetTripDetailsAsync(int tripId)
-    {
-        TripDetailsViewModel tripDetails = TripDetailsViewModel.FromDto(_tripsDto, tripId);
-        return new JsonResult(tripDetails);
-    }
-    
     public async Task<IActionResult> OnGetStationsAsync(string query)
     {
         if (!string.IsNullOrEmpty(query))

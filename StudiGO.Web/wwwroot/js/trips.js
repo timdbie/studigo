@@ -1,9 +1,4 @@
-﻿$(".trips_result").click(function() {
-    console.log($(this).data("trip"));
-    var trip = $(this).data("trip");
-    var tripLegs = $(".trips_legs");
-    tripLegs.empty();
-    
+﻿$(".trips_result").click(function(trip) {
     $.each(trip.Legs, function(index, leg) {
         if (leg.TransferMessages != null) {
             tripLegs.append(createTransfer(leg.TransferMessages[0].Message));
