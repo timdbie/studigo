@@ -1,9 +1,22 @@
-﻿$(".trips_result").click(function(trip) {
-    $.each(trip.Legs, function(index, leg) {
-        if (leg.TransferMessages != null) {
-            tripLegs.append(createTransfer(leg.TransferMessages[0].Message));
-        }
-        tripLegs.append(createLeg(leg));
+﻿$(".trips_result").click(function(event) {
+    event.preventDefault();
+    var tripLegs = $(".trips_legs")
+    var url = $(this).attr('href');
+    
+    
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        success: function(trip){
+            tripLegs.empty();
+            $.each(trip.legs, function(index, leg) {
+                if (leg.transferMessages != null) {
+                    tripLegs.append(createTransfer(leg.transferMessages[0]));
+                }
+                tripLegs.append(createLeg(leg));
+            });
+        },
     });
 });
 
@@ -22,7 +35,7 @@ function createTransfer(message) {
 function createNotes(notes) {
     let notesElement = "";
     $.each(notes, function(index, note) {
-        notesElement += `<span>${note[0].Value}</span>`;
+        notesElement += `<span>${note}</span>`;
     });
     
     return notesElement;
@@ -31,8 +44,8 @@ function createNotes(notes) {
 function createLeg(leg) {
     return `<div class="trips_leg">
                 <div class="trips_times">
-                    <span>${formatTime(leg.Origin.PlannedDateTime)}</span>
-                    <span>${formatTime(leg.Destination.PlannedDateTime)}</span>
+                    <span>${leg.origin.time}</span>
+                    <span>${leg.destination.time}</span>
                 </div>
                 <div class="trips_graphic">
                     <div class="trips_pin"></div>
@@ -41,15 +54,15 @@ function createLeg(leg) {
                 </div>
                 <div class="trips_info">
                     <div class="trips_station">
-                        <span>${leg.Origin.Name}</span>
-                        <span class="trips_track">Spoor ${leg.Origin.PlannedTrack}</span>
+                        <span>${leg.origin.name}</span>
+                        <span class="trips_track">Spoor ${leg.origin.track}</span>
                     </div>
                     <div class="trips_notes">
-                        ${createNotes(leg.Product.Notes)}
+                        ${createNotes(leg.notes)}
                     </div>
                     <div class="trips_station">
-                        <span>${leg.Destination.Name}</span>
-                        <span class="trips_track">Spoor ${leg.Destination.PlannedTrack}</span>
+                        <span>${leg.destination.name}</span>
+                        <span class="trips_track">Spoor ${leg.destination.track}</span>
                     </div>
                 </div>
             </div>`

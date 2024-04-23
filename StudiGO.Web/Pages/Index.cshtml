@@ -56,7 +56,7 @@
             <div class="trips_results">
                 @foreach (var trip in Model.Trips)
                 {
-                    <a class="trips_result" href="?handler=TripDetails&context=@trip.Context">
+                    <a class="trips_result" href="?handler=TripDetails&context=@Html.Raw(Uri.EscapeDataString(trip.Context))">
                         <div class="trips_row">
                             <div class="trips_times">
                                 <span class="trips_timespan">@trip.PlannedDepartureTime</span>
