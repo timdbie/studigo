@@ -6,8 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-//builder.Services.AddScoped<StationsService>();
-//builder.Services.AddScoped<IStationsRepository, StationsRepository>();
+builder.Services.AddScoped<StationsService>();
+builder.Services.AddScoped<IStationsRepository, StationsRepository>();
 builder.Services.AddScoped<TripsService>();
 builder.Services.AddScoped<ITripsRepository, TripsRepository>();
 
