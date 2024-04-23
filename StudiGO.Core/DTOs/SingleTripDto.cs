@@ -22,7 +22,6 @@ public class SingleTripEndPoint
     public string ActualTrack { get; set; }
 }
 
-
 public class Product
 {
     public List<List<Note>> Notes { get; set; }
