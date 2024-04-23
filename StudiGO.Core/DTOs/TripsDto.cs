@@ -7,6 +7,7 @@ public class TripsDto
 
 public class Trip
 {
+    public string CtxRecon { get; set; }
     public int PlannedDurationInMinutes { get; set; }
     public int ActualDurationInMinutes { get; set; }
     public int Transfers { get; set; }
