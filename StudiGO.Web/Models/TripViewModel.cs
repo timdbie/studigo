@@ -16,8 +16,8 @@ namespace StudiGO.Models
             {
                 PlannedDuration = TimeSpan.FromMinutes(trip.PlannedDurationInMinutes).ToString("hh\\:mm"),
                 ActualDuration = TimeSpan.FromMinutes(trip.ActualDurationInMinutes).ToString("hh\\:mm"),
-                PlannedDepartureTime = trip.Legs[0].Origin.PlannedDateTime.ToString("HH:mm"),
-                PlannedArrivalTime = trip.Legs[^1].Destination.PlannedDateTime.ToString("HH:mm"),
+                PlannedDepartureTime = trip.PlannedDepartureDateTime.ToString("HH:mm"),
+                PlannedArrivalTime = trip.PlannedArrivalDateTime.ToString("HH:mm"),
                 Transfers = trip.Transfers,
             };
                 

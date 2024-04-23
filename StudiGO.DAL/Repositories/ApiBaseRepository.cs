@@ -15,25 +15,18 @@ namespace StudiGO.DAL.Repositories
             _subscriptionKey = GetSubscriptionKey();
         }
 
-        public async Task<T> GetApiResponseAsync<T>(string endpoint)
+        public async Task<TDto> GetApiResponseAsync<TDto>(string endpoint, Func<string, TDto> mapper)
         {
-            try
+            var headers = new Dictionary<string, string>
             {
-                var headers = new Dictionary<string, string>
-                {
-                    { "Ocp-Apim-Subscription-Key", _subscriptionKey }
-                };
+                { "Ocp-Apim-Subscription-Key", _subscriptionKey }
+            };
 
-                HttpResponseMessage response = await _httpClientWrapper.GetAsync(_baseUrl + endpoint, headers).ConfigureAwait(false);
-                response.EnsureSuccessStatusCode();
+            HttpResponseMessage response = await _httpClientWrapper.GetAsync(_baseUrl + endpoint, headers).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
 
-                string jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonConvert.DeserializeObject<T>(jsonResponse);
-            }
-            catch (HttpRequestException ex)
-            {
-                throw new Exception($"Error fetching data from {_baseUrl}{endpoint}: {ex.Message}", ex);
-            }
+            string json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            return mapper(json);
         }
 
         private string GetSubscriptionKey()
