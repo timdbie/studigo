@@ -11,9 +11,7 @@ public class Trip
     public int ActualDurationInMinutes { get; set; }
     
     public DateTime PlannedDepartureDateTime { get; set; }
-    public DateTime ActualDepartureDateTime { get; set; }
     public DateTime PlannedArrivalDateTime { get; set; }
-    public DateTime ActualArrivalDateTime { get; set; }
     public int Transfers { get; set; }
     public string Status { get; set; }
 }

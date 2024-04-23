@@ -20,17 +20,11 @@ public class TripsMapper
             {
                 PlannedDurationInMinutes = tripResponse.PlannedDurationInMinutes,
                 ActualDurationInMinutes = tripResponse.ActualDurationInMinutes,
+                PlannedDepartureDateTime = DateTime.Parse(tripResponse.Legs.First().Origin.PlannedDateTime),
+                PlannedArrivalDateTime = DateTime.Parse(tripResponse.Legs.Last().Destination.PlannedDateTime),
                 Transfers = tripResponse.Transfers,
                 Status = tripResponse.Status
             };
-            
-            if (tripResponse.Legs.Count > 0)
-            {
-                trip.PlannedDepartureDateTime = DateTime.Parse(tripResponse.Legs[0].Origin.PlannedDateTime);
-                trip.ActualDepartureDateTime = DateTime.Parse(tripResponse.Legs[0].Origin.ActualDateTime);
-                trip.PlannedArrivalDateTime = DateTime.Parse(tripResponse.Legs[^1].Destination.PlannedDateTime);
-                trip.ActualArrivalDateTime = DateTime.Parse(tripResponse.Legs[^1].Destination.ActualDateTime);
-            }
 
             tripsDto.Trips.Add(trip);
         }
@@ -61,6 +55,5 @@ public class TripsMapper
     private class LocationResponse
     {
         public string PlannedDateTime { get; set; }
-        public string ActualDateTime { get; set; }
     }
 }
