@@ -11,47 +11,17 @@ public class Trip
     public int ActualDurationInMinutes { get; set; }
     public int Transfers { get; set; }
     public string Status { get; set; }
-    public List<Leg> Legs { get; set; }
+    public List<TripLeg> Legs { get; set; }
 }
 
-public class Leg
+public class TripLeg
 {
-    public Origin Origin { get; set; }
-    public Destination Destination { get; set; }
-    public Product Product { get; set; }
-    
-    public List<TransferMessage> TransferMessages { get; set; }
+    public TripEndpoint Origin { get; set; }
+    public TripEndpoint Destination { get; set; }
 }
 
-public class Origin
+public class TripEndpoint
 {
-    public string Name { get; set; }
     public DateTime PlannedDateTime { get; set; }
     public DateTime ActualDateTime { get; set; }
-    public string PlannedTrack { get; set; }
-    public string ActualTrack { get; set; }
-}
-
-public class Destination
-{
-    public string Name { get; set; }
-    public DateTime PlannedDateTime { get; set; }
-    public DateTime ActualDateTime { get; set; }
-    public string PlannedTrack { get; set; }
-    public string ActualTrack { get; set; }
-}
-
-public class Product
-{
-    public List<List<Note>> Notes { get; set; }
-}
-
-public class Note
-{
-    public string Value { get; set; }
-}
-
-public class TransferMessage
-{
-    public string Message { get; set; }
 }

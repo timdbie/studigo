@@ -6,10 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IApiRepository, ApiRepository>();
 builder.Services.AddScoped<StationsService>();
-builder.Services.AddScoped<IStationsRepository, StationsRepository>();
 builder.Services.AddScoped<TripsService>();
-builder.Services.AddScoped<ITripsRepository, TripsRepository>();
+builder.Services.AddScoped<SingleTripService>();
 
 // SASS watcher
 #if DEBUG
