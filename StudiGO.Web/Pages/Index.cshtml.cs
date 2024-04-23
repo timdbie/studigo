@@ -38,9 +38,9 @@ public class IndexModel : PageModel
         return Page();
     }
     
-    public async Task<IActionResult> OnGetTripDetailsAsync(string ctxRecon)
+    public async Task<IActionResult> OnGetTripDetailsAsync(string context)
     {
-        var singleTripDto = await _singleTripService.GetSingleTripAsync(ctxRecon);
+        var singleTripDto = await _singleTripService.GetSingleTripAsync(context);
         return new JsonResult(singleTripDto);
     }
     
