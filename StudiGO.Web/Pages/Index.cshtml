@@ -56,7 +56,7 @@
             <div class="trips_results">
                 @foreach (var trip in Model.Trips)
                 {
-                    <div class="trips_result">
+                    <a class="trips_result" href="?handler=TripDetails&context=@trip.Context">
                         <div class="trips_row">
                             <div class="trips_times">
                                 <span class="trips_timespan">@trip.PlannedDepartureTime</span>
@@ -68,7 +68,7 @@
                                 <span>@trip.Transfers</span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 }
             </div>
             <div class="trips_details">

@@ -6,6 +6,6 @@ namespace StudiGO.Core.Interfaces
     {
         Task<StationsDto> GetStationsAsync(string query, string countryCode, int limit);
         Task<TripsDto> GetTripsAsync(string fromStation, string toStation, string dateTime);
-        Task<SingleTripDto> GetSingleTripAsync(string ctxRecon);
+        Task<SingleTripDto> GetSingleTripAsync(string context);
     }
 }
