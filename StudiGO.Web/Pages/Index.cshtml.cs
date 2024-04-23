@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudiGO.Core.Services;
 using StudiGO.Core.DTOs;
-using StudiGO.Models;
 
 namespace StudiGO.Pages;
 
@@ -17,22 +16,15 @@ public class IndexModel : PageModel
         _tripsService = tripsService;
     }
 
-    private TripsDto _tripsDto { get; set; }
-    public List<TripViewModel> Trips { get; private set; }
+    public List<Trip> Trips { get; set; }
 
     public async Task<IActionResult> OnGetTripsAsync(string fromStation, string toStation, string date, string time)
     {
         string dateTime = date + "T" + time;
         
-        _tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
+        TripsDto tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
+        Trips = tripsDto.Trips;
         
-        Trips = new List<TripViewModel>();
-        foreach (var trip in _tripsDto.Trips)
-        {
-            TripViewModel tripViewModel = TripViewModel.FromDto(trip);
-            Trips.Add(tripViewModel);
-        }
-
         return Page();
     }
     
