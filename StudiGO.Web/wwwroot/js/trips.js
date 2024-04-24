@@ -1,24 +1,34 @@
-﻿$(".trips_result").click(function(event) {
-    event.preventDefault();
-    var tripLegs = $(".trips_legs")
-    var url = $(this).attr('href');
+﻿$(window).on('hashchange', async function(e){
+    e.preventDefault();
+    var url = window.location.href;
+    var params = new URLSearchParams(url.split('?')[1]);
+    var context = params.get("context");
+    console.log(context);
     
-    
-    $.ajax({
-        url: url,
-        type: 'GET',
-        dataType: 'json',
-        success: function(trip){
-            tripLegs.empty();
-            $.each(trip.legs, function(index, leg) {
-                if (leg.transferMessages != null) {
-                    tripLegs.append(createTransfer(leg.transferMessages[0]));
-                }
-                tripLegs.append(createLeg(leg));
+    if (context) {
+        try {
+            const data = await $.ajax({
+                url: "?handler=TripDetails",
+                type: "GET",
+                data: { context: context }
             });
-        },
+            createTripDetails($(".trip_legs"));
+        } catch (error) {
+            throw new Error("Failed to fetch stations: " + error);
+        }
+        
+    }
+})
+
+function createTripDetails(tripLegs) {
+    tripLegs.empty();
+    $.each(trip.legs, function(index, leg) {
+        if (leg.transferMessages != null) {
+            tripLegs.append(createTransfer(leg.transferMessages[0]));
+        }
+        tripLegs.append(createLeg(leg));
     });
-});
+}
 
 function createTransfer(message) {
     return `<div class="trips_transfer">

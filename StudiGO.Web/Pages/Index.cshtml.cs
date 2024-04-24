@@ -21,17 +21,22 @@ public class IndexModel : PageModel
     
     public List<TripViewModel> Trips { get; private set; }
 
-    public async Task<IActionResult> OnGetTripsAsync(string fromStation, string toStation, string date, string time)
+    public async Task<IActionResult> OnGetAsync(string? fromStation, string? toStation, string? date, string? time)
     {
-        string dateTime = date + "T" + time;
-        
-        TripsDto tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
-        
-        Trips = new List<TripViewModel>();
-        foreach (var trip in tripsDto.Trips)
+        if (fromStation != null || toStation != null || date != null || time != null)
         {
-            TripViewModel tripViewModel = TripViewModel.FromDto(trip);
-            Trips.Add(tripViewModel);
+            string dateTime = date + "T" + time;
+
+            TripsDto tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
+
+            Trips = new List<TripViewModel>();
+            foreach (var trip in tripsDto.Trips)
+            {
+                TripViewModel tripViewModel = TripViewModel.FromDto(trip);
+                tripViewModel.Ref =
+                    $"fromStation={fromStation}&toStation={toStation}&dateTime={dateTime}&context={trip.CtxRecon}";
+                Trips.Add(tripViewModel);
+            }
         }
 
         return Page();
