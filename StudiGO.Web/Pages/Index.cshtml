@@ -49,30 +49,25 @@
 
 <div class="trips">
     <div class="trips_content">
-        @if (Model.Trips != null)
-        {
-            <div class="trips_results">
-                @foreach (var trip in Model.Trips)
-                {
-                    <a class="trips_result" href="trip.Ref">
-                        <div class="trips_row">
-                            <div class="trips_times">
-                                <span class="trips_timespan">@trip.PlannedDepartureTime</span>
-                                <span>></span>
-                                <span class="trips_timespan">@trip.PlannedArrivalTime</span>
-                            </div>
-                            <div class="trip_info">
-                                <span>@trip.PlannedDuration</span>
-                                <span>@trip.Transfers</span>
-                            </div>
-                        </div>
-                    </a>
-                }
-            </div>
-            <div class="trips_details">
-                <div class="trips_title">Reisadvies</div>
-                <div class="trips_legs"></div>
-            </div>
-        }
+        <div class="trips_results">
+            <a class="trips_result">
+                <div class="trips_row">
+                    <div class="trips_times">
+                        <span class="trips_timespan"></span>
+                        <span>></span>
+                        <span class="trips_timespan"></span>
+                    </div>
+                    <div class="trip_info">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="trips_details">
+            <div class="trips_title">Reisadvies</div>
+            <div class="trips_legs"></div>
+        </div>
+        
     </div>
 </div>

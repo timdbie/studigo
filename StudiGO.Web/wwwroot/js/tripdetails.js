@@ -1,20 +1,3 @@
-// var url = window.location.href;
-// var params = new URLSearchParams(url.split('?')[1]);
-// var context = params.get("context");
-//
-// if(context) {
-//     try {
-//         const data = await $.ajax({
-//             url: "?handler=TripDetails",
-//             type: "GET",
-//             data: {context: context},
-//         });
-//         createTripDetails(data);
-//     } catch (error) {
-//         throw new Error("Failed to fetch stations: " + error);
-//     }
-// }
-
 function createTripDetails(trip) {
     var tripLegs = $(".trips_legs");
     tripLegs.empty();;
