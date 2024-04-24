@@ -9,7 +9,7 @@
         }
     });
     console.log(trips);
-    return trips[0].context;
+    return trips;
 }
 
 async function updateContent() {
@@ -20,16 +20,6 @@ async function updateContent() {
     var toStation = params.get('toStation');
     var dateTime = params.get('dateTime');
     var context = params.get('context');
-    
-    if(context) {
-        const tripDetails = await $.ajax({
-            url: "?handler=TripDetails",
-            type: "GET",
-            data: { context: context }
-        })
-        createTripDetails(tripDetails);
-        console.log(tripDetails);
-    }
     
     var fromStationInput = $('input[name="fromStation"]').val();
     var toStationInput = $('input[name="toStation"]').val();
@@ -43,14 +33,25 @@ async function updateContent() {
             toStationInput !== toStation ||
             dateTimeInput !== dateTime) {
             
-            fetchTrips(fromStationInput, toStationInput, dateTimeInput).then(function (tripContext) {
-                if (tripContext) {
-                    var updatedUrlParams = 'fromStation=' + fromStationInput + '&toStation=' + toStationInput + '&dateTime=' + dateTimeInput + '&context=' + tripContext;
-                    window.history.pushState({}, '', '#/?' + updatedUrlParams);
-                }
-            });
+            var trips = await fetchTrips(fromStationInput, toStationInput, dateTimeInput)
+            var tripContext = trips[0].context;
+            createTrips(trips);
+
+            var updatedUrlParams = 'fromStation=' + fromStationInput + '&toStation=' + toStationInput + '&dateTime=' + dateTimeInput + '&context=' + tripContext;
+            window.history.pushState({}, '', '#/?' + updatedUrlParams);
         }
     }
+
+    if(context) {
+        const tripDetails = await $.ajax({
+            url: "?handler=TripDetails",
+            type: "GET",
+            data: { context: context }
+        })
+        createTripDetails(tripDetails);
+        console.log(tripDetails);
+    }
+
 }
 
 updateContent();
@@ -63,3 +64,27 @@ $(".planner").submit(async function(event){
 $(window).on('popstate', function(e){
     updateContent();
 });
+
+function createTrips(trips) {
+    var tripResults = $(".trips_results");
+    tripResults.empty();
+    $.each(trips, function(index, trip) {
+        tripResults.append(createTripResult(trip));
+    });
+}
+
+function createTripResult(trip) {
+    return `<a class="trips_result">
+                <div class="trips_row">
+                    <div class="trips_times">
+                        <span class="trips_timespan">${trip.plannedDepartureTime}</span>
+                        <span>></span>
+                        <span class="trips_timespan">${trip.plannedArrivalTime}</span>
+                    </div>
+                    <div class="trip_info">
+                        <span>${trip.plannedDuration}</span>
+                        <span>${trip.transfers}</span>
+                    </div>
+                </div>
+            </a>`
+}
