@@ -1,11 +1,15 @@
-$default_fontsize: 14px
+$default_fontsize: 16px
+
+$main: #606060
+
 
 .planner
   width: 100%
+  height: 250px
   background-color: gray
   display: flex
   justify-content: center
-  padding: 30px 0
+  align-items: center
   
   .planner_content
     width: 100%
@@ -28,12 +32,15 @@ $default_fontsize: 14px
         display: flex
         justify-content: space-between
         align-items: center
+        margin-bottom: 15px
         
         .stations_search
           flex: 1
           
           input
             padding: 0 10px 0 50px
+            font-size: $default_fontsize
+            border-radius: 5px
           
           label
             width: 50px
@@ -52,6 +59,33 @@ $default_fontsize: 14px
           background-color: darkgray
           margin: 0 20px
           cursor: pointer
+          
+      .planner_buttons
+        width: 100%
+        height: 40px
+        display: flex
+        justify-content: space-between
+        
+        .planner_datetime
+          
+          input
+            height: 40px
+            border-radius: 5px
+            border: 0
+            font-size: $default_fontsize
+            margin-right: 10px
+            padding: 0 10px
+        
+        .planner_submit
+          width: 150px
+          background-color: $main
+          color: white
+          border-radius: 5px
+          border: 0
+          font-size: $default_fontsize
+          font-weight: 600
+          cursor: pointer
+        
             
 .trips
   width: 100%
