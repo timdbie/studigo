@@ -33,7 +33,13 @@ async function updateContent() {
     
     if (fromStation && toStation && dateTime) {
         var trips = await fetchTrips(fromStation, toStation, dateTime)
-        createTrips(trips);
+        var tripsParam = params;
+        
+        if(context) {
+            tripsParam.delete("context")
+        }
+        
+        createTrips(trips, tripsParam);
     }
     
     if(context) {
@@ -63,20 +69,20 @@ $(".planner").submit(async function(event){
     updateContent();
 });
 
-$(window).on('popstate', function(e){
+$(window).on('hashchange', function(e){
     updateContent();
 });
 
-function createTrips(trips) {
+function createTrips(trips, tripsParam) {
     var tripResults = $(".trips_results");
     tripResults.empty();
     $.each(trips, function(index, trip) {
-        tripResults.append(createTripResult(trip));
+        tripResults.append(createTripResult(trip, tripsParam));
     });
 }
 
-function createTripResult(trip) {
-    return `<a class="trips_result" href="#/?&context=${trip.context}">
+function createTripResult(trip, tripsParam) {
+    return `<a class="trips_result" href="#/?${tripsParam}&context=${trip.context}">
                 <div class="trips_row">
                     <div class="trips_times">
                         <span class="trips_timespan">${trip.plannedDepartureTime}</span>
