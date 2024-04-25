@@ -15,7 +15,7 @@ namespace StudiGO.Models
         {
             TripViewModel tripViewModel = new TripViewModel
             {
-                Context = trip.CtxRecon,
+                Context = Uri.EscapeDataString(trip.CtxRecon),
                 PlannedDuration = TimeSpan.FromMinutes(trip.PlannedDurationInMinutes).ToString("hh\\:mm"),
                 ActualDuration = TimeSpan.FromMinutes(trip.ActualDurationInMinutes).ToString("hh\\:mm"),
                 PlannedDepartureTime = trip.Legs[0].Origin.PlannedDateTime.ToString("HH:mm"),
