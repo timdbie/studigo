@@ -64,49 +64,6 @@ async function fetchTripDetails(context) {
 
 updateContent();
 
-$(".planner").submit(async function(event){
-    event.preventDefault();
-    
-    var formData = new FormData(this);
-    
-    var date =  formData.get("date");
-    var time = formData.get("time");
-    var dateTime = date + "T" + time;
-
-    formData.delete("date");
-    formData.delete("time");
-    formData.set("dateTime", dateTime)
-    
-    var params = new URLSearchParams(formData).toString();
-    window.history.pushState({}, '', '#/?' + params);
-    
-    updateContent();
-});
-
 $(window).on('hashchange', function(e){
     updateContent();
 });
-
-function createTrips(trips, tripsParam) {
-    var tripResults = $(".trips_results");
-    tripResults.empty();
-    $.each(trips, function(index, trip) {
-        tripResults.append(createTripResult(trip, tripsParam));
-    });
-}
-
-function createTripResult(trip, tripsParam) {
-    return `<a class="trips_result" href="#/?${tripsParam}&context=${trip.context}">
-                <div class="trips_row">
-                    <div class="trips_times">
-                        <span class="trips_timespan">${trip.plannedDepartureTime}</span>
-                        <span>></span>
-                        <span class="trips_timespan">${trip.plannedArrivalTime}</span>
-                    </div>
-                    <div class="trip_info">
-                        <span>${trip.plannedDuration}</span>
-                        <span>${trip.transfers}</span>
-                    </div>
-                </div>
-            </a>`
-}

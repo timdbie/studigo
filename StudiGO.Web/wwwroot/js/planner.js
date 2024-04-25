@@ -11,14 +11,28 @@ $('.planner_time input').val(localTime);
 $("#fromStation").val(fromStationSession);
 $("#toStation").val(toStationSession);
 
-$(".planner").submit(function(event) {
-    fromStationSession = $("#fromStation").val();
-    toStationSession = $("#toStation").val();
+$(".planner").submit(async function(event) {
+    event.preventDefault();
     
-    sessionStorage.setItem("fromStation", fromStationSession)
-    sessionStorage.setItem("toStation", toStationSession)
+    var formData = new FormData(this);
     
-    return true;
+    var fromStation = formData.get("fromStation");
+    var toStation = formData.get("toStation");
+    var date =  formData.get("date");
+    var time = formData.get("time");
+    var dateTime = date + "T" + time;
+
+    formData.delete("date");
+    formData.delete("time");
+    formData.set("dateTime", dateTime);
+
+    sessionStorage.setItem("fromStation", fromStation);
+    sessionStorage.setItem("toStation", toStation);
+
+    var params = new URLSearchParams(formData).toString();
+    window.history.pushState({}, '', '#/?' + params);
+
+    updateContent();
 })
 
 $(".planner_switch").on("click", function() {
