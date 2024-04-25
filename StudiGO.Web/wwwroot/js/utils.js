@@ -3,7 +3,7 @@
     var hours = date.getHours();
     var minutes = date.getMinutes();
 
-    return `${hours}:${minutes.toString().padStart(2, '0')}`;
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
 }
 
 function formatDate(datetime) {
