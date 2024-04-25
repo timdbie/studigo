@@ -5,8 +5,8 @@ var localTime = formatTime(now);
 var fromStationSession = sessionStorage.getItem("fromStation");
 var toStationSession = sessionStorage.getItem("toStation");
 
-$('.planner_date input').val(localDate);
-$('.planner_time input').val(localTime);
+$("#date").val(localDate);
+$("#time").val(localTime);
 
 $("#fromStation").val(fromStationSession);
 $("#toStation").val(toStationSession);
