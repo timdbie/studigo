@@ -1,31 +1,27 @@
 var searchTimer;
 
 async function getStations(query) {
-    try {
-        const data = await $.ajax({
-            url: "?handler=Stations",
-            type: "GET",
-            data: { query: query }
-        });
-        return data.payload;
-    } catch (error) {
-        throw new Error("Failed to fetch stations: " + error);
-    }
+    const data = await $.ajax({
+        url: "?handler=Stations",
+        type: "GET",
+        data: { query: query }
+    });
+    return data.payload;
 }
 
 async function getStationResults(input, element) {
     var results = element.children(".stations_results");
     results.empty();
-
-    try {
-        const stations = await getStations(input);
-        stations.forEach((station) => {
-            var stationDiv = $("<div>").text(station.namen.lang);
-            results.append(stationDiv);
-        });
-    } catch (error) {
-        console.error(error);
-    }
+    
+    const stations = await getStations(input);
+    stations.forEach((station) => {
+        var stationDiv = `<div>
+                                    <label>O</label>
+                                    <span class="stations_name">${station.namen.lang}</span>
+                                    <span>Treinstation</span>
+                                 </div>`;
+        results.append(stationDiv);
+    });
 }
 
 $(".stations_search input").on("input", function() {
@@ -38,7 +34,7 @@ $(".stations_search input").on("input", function() {
         if(inputVal !== "") {
             await getStationResults(inputVal, search);
         }
-    }, 500);
+    }, 300);
 }).on("focus", function() {
     var results = $(this).next(".stations_results");
     results.show();
@@ -50,8 +46,9 @@ $(".stations_search input").on("input", function() {
 $(".stations_search").on("mousedown", ".stations_results div", function(event) {
     if(event.button === 0) {
         var input = $(this).closest(".stations_search").find("input");
-
-        input.val($(this).text());
+        var result = $(this).children(".stations_name").text();
+        
+        input.val(result);
     } else {
         event.preventDefault();
     }
