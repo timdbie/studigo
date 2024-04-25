@@ -53,9 +53,9 @@ namespace StudiGO.DAL.Repositories
             return await GetApiResponseAsync<TripsDto>(endpoint);
         }
         
-        public async Task<SingleTripDto> GetSingleTripAsync(string ctxRecon)
+        public async Task<SingleTripDto> GetSingleTripAsync(string context)
         {
-            string endpoint = $"/v3/trips/trip?ctxRecon={ctxRecon}";
+            string endpoint = $"/v3/trips/trip?ctxRecon={context}";
             return await GetApiResponseAsync<SingleTripDto>(endpoint);
         }
     }

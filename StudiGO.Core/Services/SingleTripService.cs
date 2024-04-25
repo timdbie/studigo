@@ -12,9 +12,9 @@ public class SingleTripService
         _apiRepository = apiRepository;
     }
     
-    public async Task<SingleTripDto> GetTripsAsync(string ctxRecon)
+    public async Task<SingleTripDto> GetSingleTripAsync(string context)
     {
-        var singleTripDto = await _apiRepository.GetSingleTripAsync(ctxRecon);
+        var singleTripDto = await _apiRepository.GetSingleTripAsync(context);
         
         return singleTripDto;
     }

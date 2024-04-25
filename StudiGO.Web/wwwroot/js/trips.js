@@ -1,56 +1,71 @@
-﻿$(".trips_result").click(function(trip) {
-    $.each(trip.Legs, function(index, leg) {
-        if (leg.TransferMessages != null) {
-            tripLegs.append(createTransfer(leg.TransferMessages[0].Message));
+﻿var prevFromStation, prevToStation, prevDateTime, prevContext;
+
+async function updateContent() {
+    var hashParams = window.location.hash.substring(2);
+    var params = new URLSearchParams(hashParams);
+
+    var fromStation = params.get('fromStation');
+    var toStation = params.get('toStation');
+    var dateTime = params.get('dateTime');
+    var context = params.get('context');
+
+    var tripsParamsChanged = fromStation !== prevFromStation || toStation !== prevToStation || dateTime !== prevDateTime;
+    var contextParamsChanged = context !== prevContext;
+
+    prevFromStation = fromStation;
+    prevToStation = toStation;
+    prevDateTime = dateTime;
+    prevContext = context;
+
+    if (fromStation && toStation && dateTime) {
+        if (tripsParamsChanged) {
+            var trips = await fetchTrips(fromStation, toStation, dateTime)
+            var tripsParam = params;
+
+            if (context) {
+                tripsParam.delete("context")
+            }
+            
+            createTrips(trips, tripsParam);
         }
-        tripLegs.append(createLeg(leg));
+    }
+
+    if (context) {
+        if (contextParamsChanged) {
+            var tripDetails = await fetchTripDetails(context);
+            createTripDetails(tripDetails);
+        }
+    } else {
+        $(".trips_legs").empty();
+    }
+}
+
+async function fetchTrips(fromStation, toStation, dateTime) {
+    const trips = await $.ajax({
+        url: "?handler=Trips",
+        type: "GET",
+        data: { 
+            fromStation: fromStation,
+            toStation: toStation,
+            dateTime: dateTime,
+        }
     });
+    console.log(trips);
+    return trips;
+}
+
+async function fetchTripDetails(context) {
+    const tripDetails = await $.ajax({
+        url: "?handler=TripDetails",
+        type: "GET",
+        data: { context: context }
+    })
+    console.log(tripDetails);
+    return tripDetails;
+}
+
+updateContent();
+
+$(window).on('hashchange', function(e){
+    updateContent();
 });
-
-function createTransfer(message) {
-    return `<div class="trips_transfer">
-                <div class="trips_transfer_icon"></div>
-                <div class="trips_transfer_graphic">
-                    <div></div>
-                </div>
-                <div class="trips_transfer_info">
-                    <div>${message}</div>
-                </div>
-            </div>`
-}
-
-function createNotes(notes) {
-    let notesElement = "";
-    $.each(notes, function(index, note) {
-        notesElement += `<span>${note[0].Value}</span>`;
-    });
-    
-    return notesElement;
-}
-
-function createLeg(leg) {
-    return `<div class="trips_leg">
-                <div class="trips_times">
-                    <span>${formatTime(leg.Origin.PlannedDateTime)}</span>
-                    <span>${formatTime(leg.Destination.PlannedDateTime)}</span>
-                </div>
-                <div class="trips_graphic">
-                    <div class="trips_pin"></div>
-                    <div class="trips_line"></div>
-                    <div class="trips_pin"></div>
-                </div>
-                <div class="trips_info">
-                    <div class="trips_station">
-                        <span>${leg.Origin.Name}</span>
-                        <span class="trips_track">Spoor ${leg.Origin.PlannedTrack}</span>
-                    </div>
-                    <div class="trips_notes">
-                        ${createNotes(leg.Product.Notes)}
-                    </div>
-                    <div class="trips_station">
-                        <span>${leg.Destination.Name}</span>
-                        <span class="trips_track">Spoor ${leg.Destination.PlannedTrack}</span>
-                    </div>
-                </div>
-            </div>`
-}

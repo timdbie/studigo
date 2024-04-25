@@ -1,69 +1,37 @@
-.banner .banner_tabs {
-  width: 100%;
-  height: 48px;
-  display: flex;
-  background-color: white;
-  align-items: flex-end;
-}
-.banner .banner_tabs div {
-  width: 50%;
-  height: 44px;
-  background-color: lightgray;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.banner .banner_tabs div:nth-child(1) {
-  justify-content: flex-end;
-}
-.banner .banner_tabs div:nth-child(1).banner_tabs-selected {
-  border-radius: 0 4px 0 0;
-}
-.banner .banner_tabs div:nth-child(2) {
-  justify-content: flex-start;
-}
-.banner .banner_tabs div:nth-child(2).banner_tabs-selected {
-  border-radius: 4px 0 0 0;
-}
-.banner .banner_tabs .banner_tabs-selected {
-  height: 48px;
-  padding-top: 4px;
-  background-color: gray;
-}
-.banner .banner_content {
+.planner {
   width: 100%;
   background-color: gray;
   display: flex;
   justify-content: center;
-  padding-bottom: 50px;
+  padding: 30px 0;
 }
-.banner .banner_content .banner_planner {
+.planner .planner_content {
   width: 100%;
   max-width: 1120px;
   padding: 0 20px;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
 }
-.banner .banner_content .banner_planner h1 {
+.planner .planner_content h1 {
   font-weight: 600;
   font-size: 32px;
   color: white;
 }
-.banner .banner_content .banner_planner .planner .planner_search {
+.planner .planner_content .planner_form .planner_search {
   width: 100%;
   height: 55px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.banner .banner_content .banner_planner .planner .planner_search .stations_search {
+.planner .planner_content .planner_form .planner_search .stations_search {
   flex: 1;
 }
-.banner .banner_content .banner_planner .planner .planner_search .stations_search input {
+.planner .planner_content .planner_form .planner_search .stations_search input {
   padding: 0 10px 0 50px;
 }
-.banner .banner_content .banner_planner .planner .planner_search .stations_search label {
+.planner .planner_content .planner_form .planner_search .stations_search label {
   width: 50px;
   height: 100%;
   position: absolute;
@@ -73,7 +41,7 @@
   font-weight: 600;
   font-size: 14px;
 }
-.banner .banner_content .banner_planner .planner .planner_search .planner_switch {
+.planner .planner_content .planner_form .planner_search .planner_switch {
   width: 55px;
   height: 55px;
   border-radius: 55px;
@@ -101,6 +69,7 @@
 .trips .trips_content .trips_results .trips_result {
   width: 100%;
   height: 80px;
+  color: black;
   background-color: white;
   margin-bottom: 20px;
   border-radius: 4px;
@@ -109,6 +78,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 }
 .trips .trips_content .trips_results .trips_result .trips_row {
   width: 100%;

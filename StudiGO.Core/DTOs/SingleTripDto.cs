@@ -10,7 +10,7 @@ public class SingleTripLeg
     public SingleTripEndPoint Origin { get; set; }
     public SingleTripEndPoint Destination { get; set; }
     public Product Product { get; set; }
-    public List<TransferMessage> TransferMessages { get; set; }
+    public List<TransferMessage>? TransferMessages { get; set; }
 }
 
 public class SingleTripEndPoint
@@ -24,7 +24,12 @@ public class SingleTripEndPoint
 
 public class Product
 {
-    public List<List<string>> Notes { get; set; }
+    public List<List<Note>> Notes { get; set; }
+}
+
+public class Note
+{
+    public string Value { get; set; }
 }
 
 public class TransferMessage
