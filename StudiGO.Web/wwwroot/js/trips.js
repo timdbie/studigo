@@ -25,18 +25,21 @@ async function updateContent() {
             if (context) {
                 tripsParam.delete("context")
             }
-            
+        }
+        if (context) {
+            if (contextParamsChanged) {
+                var tripDetails = await fetchTripDetails(context);
+            }
+        } else {
+            $(".trips_legs").empty();
+        }
+        
+        if(trips) {
             createTrips(trips, tripsParam);
         }
-    }
-
-    if (context) {
-        if (contextParamsChanged) {
-            var tripDetails = await fetchTripDetails(context);
+        if(tripDetails) {
             createTripDetails(tripDetails);
         }
-    } else {
-        $(".trips_legs").empty();
     }
 }
 
