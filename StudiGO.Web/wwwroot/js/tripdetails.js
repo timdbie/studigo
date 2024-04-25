@@ -1,6 +1,6 @@
 function createTripDetails(trip) {
     var tripLegs = $(".trips_legs");
-    tripLegs.empty();;
+    tripLegs.empty();
     $.each(trip.legs, function(index, leg) {
         if (leg.transferMessages != null) {
             tripLegs.append(createTransfer(leg.transferMessages[0]));
