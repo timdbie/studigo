@@ -11,7 +11,7 @@ $('.planner_time input').val(localTime);
 $("#fromStation").val(fromStationSession);
 $("#toStation").val(toStationSession);
 
-$(".planner").submit(async function(event) {
+$(".planner_form").submit(async function(event) {
     event.preventDefault();
     
     var formData = new FormData(this);

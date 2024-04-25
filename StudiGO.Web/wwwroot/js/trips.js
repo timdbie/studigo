@@ -35,6 +35,8 @@ async function updateContent() {
             var tripDetails = await fetchTripDetails(context);
             createTripDetails(tripDetails);
         }
+    } else {
+        $(".trips_legs").empty();
     }
 }
 
