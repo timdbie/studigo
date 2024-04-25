@@ -1,11 +1,11 @@
-﻿async function fetchTrips(fromStation, toStation, date, time) {
+﻿async function fetchTrips(fromStation, toStation, dateTime) {
     const trips = await $.ajax({
         url: "?handler=Trips",
         type: "GET",
         data: { 
             fromStation: fromStation,
             toStation: toStation,
-            dateTime: date + "T" + time,
+            dateTime: dateTime,
         }
     });
     console.log(trips);
@@ -28,12 +28,11 @@ async function updateContent() {
     
     var fromStation = params.get('fromStation');
     var toStation = params.get('toStation');
-    var date = params.get('date');
-    var time = params.get('time');
+    var dateTime = params.get('dateTime');
     var context = params.get('context');
     
-    if (fromStation && toStation && date && time) {
-        var trips = await fetchTrips(fromStation, toStation, date, time)
+    if (fromStation && toStation && dateTime) {
+        var trips = await fetchTrips(fromStation, toStation, dateTime)
         createTrips(trips);
     }
     
@@ -48,7 +47,17 @@ updateContent();
 $(".planner").submit(async function(event){
     event.preventDefault();
     
-    var params = $(this).serialize();
+    var formData = new FormData(this);
+    
+    var date =  formData.get("date");
+    var time = formData.get("time");
+    var dateTime = date + "T" + time;
+
+    formData.delete("date");
+    formData.delete("time");
+    formData.set("dateTime", dateTime)
+    
+    var params = new URLSearchParams(formData).toString();
     window.history.pushState({}, '', '#/?' + params);
     
     updateContent();
