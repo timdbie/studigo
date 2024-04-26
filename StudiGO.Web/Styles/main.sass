@@ -67,14 +67,30 @@ $main: #606060
         justify-content: space-between
         
         .planner_datetime
+          display: flex
           
-          input
-            height: 40px
-            border-radius: 5px
-            border: 0
-            font-size: $default_fontsize
-            margin-right: 10px
-            padding: 0 10px
+          .planner_date,
+          .planner_time
+            position: relative
+            
+            label
+              width: 40px
+              height: 40px
+              display: flex
+              justify-content: center
+              align-items: center
+              background-color: darkgray
+              position: absolute
+              border-radius: 5px
+              color: white
+          
+            input
+              height: 40px
+              border-radius: 5px
+              border: 0
+              font-size: $default_fontsize
+              margin-right: 10px
+              padding: 0 10px 0 50px
         
         .planner_submit
           width: 150px
@@ -85,8 +101,6 @@ $main: #606060
           font-size: $default_fontsize
           font-weight: 600
           cursor: pointer
-        
-            
 .trips
   width: 100%
   display: flex

@@ -59,13 +59,33 @@
   display: flex;
   justify-content: space-between;
 }
-.planner .planner_content .planner_form .planner_buttons .planner_datetime input {
+.planner .planner_content .planner_form .planner_buttons .planner_datetime {
+  display: flex;
+}
+.planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_date,
+.planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_time {
+  position: relative;
+}
+.planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_date label,
+.planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_time label {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgray;
+  position: absolute;
+  border-radius: 5px;
+  color: white;
+}
+.planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_date input,
+.planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_time input {
   height: 40px;
   border-radius: 5px;
   border: 0;
   font-size: 16px;
   margin-right: 10px;
-  padding: 0 10px;
+  padding: 0 10px 0 50px;
 }
 .planner .planner_content .planner_form .planner_buttons .planner_submit {
   width: 150px;
