@@ -204,6 +204,10 @@ $main: #606060
             justify-content: space-between
             align-items: center
             flex-direction: column
+            
+            svg
+              font-size: 42px
+              color: gray
               
             span
               font-size: 18px
@@ -266,7 +270,6 @@ $main: #606060
               &:nth-child(3)
                 bottom: -5px
                 
-                
             .trips_notes
               flex: 1
               display: flex
@@ -274,7 +277,7 @@ $main: #606060
               flex-direction: column
               border-top: 1px solid lightgray
               border-bottom: 1px solid lightgray
-              margin: 20px 0
+              margin: 10px 0
               font-size: $default_fontsize
               
         .trips_transfer
@@ -288,6 +291,10 @@ $main: #606060
             display: flex
             justify-content: center
             align-items: center
+
+            svg
+              font-size: 42px
+              color: gray
             
           .trips_transfer_graphic
             width: 13px
@@ -308,3 +315,12 @@ $main: #606060
             margin: 20px 0
             font-size: $default_fontsize
             padding: 0 30px
+            
+            div
+              display: flex
+              align-items: center
+              border-radius: 6px
+              height: 40px
+              background-color: lightgray
+              padding: 0 10px
+              font-weight: 600

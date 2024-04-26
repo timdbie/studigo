@@ -200,6 +200,10 @@
   align-items: center;
   flex-direction: column;
 }
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times svg {
+  font-size: 42px;
+  color: gray;
+}
 .trips .trips_content .trips_details .trips_legs .trips_leg .trips_times span {
   font-size: 18px;
   font-weight: 600;
@@ -269,7 +273,7 @@
   flex-direction: column;
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
-  margin: 20px 0;
+  margin: 10px 0;
   font-size: 16px;
 }
 .trips .trips_content .trips_details .trips_legs .trips_transfer {
@@ -283,6 +287,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.trips .trips_content .trips_details .trips_legs .trips_transfer .trips_transfer_icon svg {
+  font-size: 42px;
+  color: gray;
 }
 .trips .trips_content .trips_details .trips_legs .trips_transfer .trips_transfer_graphic {
   width: 13px;
@@ -303,6 +311,15 @@
   margin: 20px 0;
   font-size: 16px;
   padding: 0 30px;
+}
+.trips .trips_content .trips_details .trips_legs .trips_transfer .trips_transfer_info div {
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  height: 40px;
+  background-color: lightgray;
+  padding: 0 10px;
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=main.css.map */
