@@ -18,20 +18,24 @@ public class IndexModel : PageModel
         _tripsService = tripsService;
         _singleTripService = singleTripService;
     }
-
-    public async Task<IActionResult> OnGetTripsAsync(string? fromStation, string? toStation, string? date, string? time)
+    
+    public async Task<IActionResult> OnGetTripsAsync(string fromStation, string toStation, string dateTime) 
     {
-        string dateTime = date + "T" + time;
         var tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
         
         List<TripViewModel> trips = new List<TripViewModel>();    
         
         foreach (var trip in tripsDto.Trips)
         {
-            trips.Add(TripViewModel.FromDto(trip));    
-        }
+            string refUrl = $"#/?fromStation={fromStation}&toStation={toStation}&dateTime={dateTime}";
+
+            TripViewModel tripViewModel = TripViewModel.FromDto(trip);
+            tripViewModel.Ref = refUrl;
         
-        return new JsonResult(trips);
+            trips.Add(tripViewModel);
+        }
+
+        return Partial("_TripsPartial", trips);
     }
     
     public async Task<IActionResult> OnGetTripDetailsAsync(string context)
@@ -39,7 +43,8 @@ public class IndexModel : PageModel
         var singleTripDto = await _singleTripService.GetSingleTripAsync(context);
         
         TripDetailsViewModel tripDetails = TripDetailsViewModel.FromDto(singleTripDto);
-        return new JsonResult(tripDetails);
+
+        return Partial("_TripDetailsPartial", tripDetails);
     }
     
     public async Task<IActionResult> OnGetStationsAsync(string query)
@@ -47,7 +52,7 @@ public class IndexModel : PageModel
         if (!string.IsNullOrEmpty(query))
         {
             var stationsDto = await _stationsService.GetFilteredStationsAsync(query, "NL", 10);
-            return new JsonResult(stationsDto);
+            return Partial("_StationsPartial", stationsDto);
         }
         
         return BadRequest("Invalid query.");

@@ -22,11 +22,6 @@ async function updateContent() {
     if (fromStation && toStation && dateTime) {
         if (tripParamsChanged) {
             var trips = await fetchTrips(fromStation, toStation, dateTime)
-            var tripsParam = params;
-
-            if (context) {
-                tripsParam.delete("context")
-            }
         }
         if (context) {
             if (contextParamsChanged) {
@@ -37,36 +32,32 @@ async function updateContent() {
         }
         
         if(trips) {
-            createTrips(trips, tripsParam);
+            $(".trips_results").html(trips);
         }
         if(tripDetails) {
-            createTripDetails(tripDetails);
+            $(".trips_legs").html(tripDetails);
         }
     }
 }
 
 async function fetchTrips(fromStation, toStation, dateTime) {
-    const trips = await $.ajax({
+    return $.ajax({
         url: "?handler=Trips",
         type: "GET",
-        data: { 
+        data: {
             fromStation: fromStation,
             toStation: toStation,
             dateTime: dateTime,
         }
     });
-    console.log(trips);
-    return trips;
 }
 
 async function fetchTripDetails(context) {
-    const tripDetails = await $.ajax({
+    return $.ajax({
         url: "?handler=TripDetails",
         type: "GET",
         data: { context: context }
     })
-    console.log(tripDetails);
-    return tripDetails;
 }
 
 updateContent();
