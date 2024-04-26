@@ -53,7 +53,7 @@ public class IndexModel : PageModel
         if (!string.IsNullOrEmpty(query))
         {
             var stationsDto = await _stationsService.GetFilteredStationsAsync(query, "NL", 10);
-            return new JsonResult(stationsDto);
+            return Partial("_StationsPartial", stationsDto);
         }
         
         return BadRequest("Invalid query.");
