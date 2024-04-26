@@ -125,10 +125,10 @@
 }
 .trips .trips_content .trips_results .trips_result {
   width: 100%;
-  height: 80px;
+  height: 90px;
   color: black;
   background-color: white;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-radius: 6px;
   padding: 10px 20px;
   display: flex;
@@ -136,6 +136,7 @@
   justify-content: space-evenly;
   align-items: center;
   text-decoration: none;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 .trips .trips_content .trips_results .trips_result .trips_row {
   width: 100%;
@@ -158,6 +159,10 @@
   color: gray;
   margin-right: 5px;
 }
+.trips .trips_content .trips_results .trips_result .trips_row .trips_info svg {
+  font-size: 18px;
+  margin: 0 5px 0 10px;
+}
 .trips .trips_content .trips_details {
   width: 50%;
   background-color: white;
@@ -165,6 +170,7 @@
   border-radius: 6px;
   height: fit-content;
   padding-bottom: 30px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 .trips .trips_content .trips_details .trips_title {
   width: 100%;
