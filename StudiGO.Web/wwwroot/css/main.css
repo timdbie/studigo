@@ -51,10 +51,15 @@
 .planner .planner_content .planner_form .planner_search .planner_switch {
   width: 55px;
   height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 55px;
   background-color: darkgray;
   margin: 0 20px;
   cursor: pointer;
+  font-size: 40px;
+  color: white;
 }
 .planner .planner_content .planner_form .planner_buttons {
   width: 100%;
