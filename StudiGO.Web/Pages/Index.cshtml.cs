@@ -19,9 +19,8 @@ public class IndexModel : PageModel
         _singleTripService = singleTripService;
     }
     
-    public async Task<IActionResult> OnGetTripsAsync(string? fromStation, string? toStation, string? date, string? time)
+    public async Task<IActionResult> OnGetTripsAsync(string fromStation, string toStation, string dateTime) 
     {
-        string dateTime = date + "T" + time;
         var tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
         
         List<TripViewModel> trips = new List<TripViewModel>();    
