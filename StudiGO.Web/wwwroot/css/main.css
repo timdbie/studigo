@@ -33,7 +33,7 @@
 .planner .planner_content .planner_form .planner_search .stations_search input {
   padding: 0 10px 0 50px;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 .planner .planner_content .planner_form .planner_search .stations_search label {
   width: 50px;
@@ -83,14 +83,14 @@
   align-items: center;
   background-color: darkgray;
   position: absolute;
-  border-radius: 5px;
+  border-radius: 6px;
   color: white;
   font-size: 24px;
 }
 .planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_date input,
 .planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_time input {
   height: 40px;
-  border-radius: 5px;
+  border-radius: 6px;
   border: 0;
   font-size: 16px;
   margin-right: 10px;
@@ -100,7 +100,7 @@
   width: 150px;
   background-color: #606060;
   color: white;
-  border-radius: 5px;
+  border-radius: 6px;
   border: 0;
   font-size: 16px;
   font-weight: 600;
@@ -129,11 +129,11 @@
   color: black;
   background-color: white;
   margin-bottom: 20px;
-  border-radius: 4px;
-  padding: 0 20px;
+  border-radius: 6px;
+  padding: 10px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   text-decoration: none;
 }
@@ -142,15 +142,27 @@
   display: flex;
   justify-content: space-between;
 }
-.trips .trips_content .trips_results .trips_result .trips_row .trips_times .trips_timespan {
+.trips .trips_content .trips_results .trips_result .trips_row div {
+  display: flex;
+  align-items: center;
+}
+.trips .trips_content .trips_results .trips_result .trips_row .trips_times span {
   font-size: 18px;
   font-weight: 600;
+}
+.trips .trips_content .trips_results .trips_result .trips_row .trips_times svg {
+  margin: 0 5px;
+}
+.trips .trips_content .trips_results .trips_result .trips_row .trips_transport svg {
+  font-size: 24px;
+  color: gray;
+  margin-right: 5px;
 }
 .trips .trips_content .trips_details {
   width: 50%;
   background-color: white;
   margin-left: 10px;
-  border-radius: 4px;
+  border-radius: 6px;
   height: fit-content;
   padding-bottom: 30px;
 }
