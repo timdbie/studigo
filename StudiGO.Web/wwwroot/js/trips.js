@@ -22,11 +22,6 @@ async function updateContent() {
     if (fromStation && toStation && dateTime) {
         if (tripParamsChanged) {
             var trips = await fetchTrips(fromStation, toStation, dateTime)
-            var tripsParam = params;
-
-            if (context) {
-                tripsParam.delete("context")
-            }
         }
         if (context) {
             if (contextParamsChanged) {

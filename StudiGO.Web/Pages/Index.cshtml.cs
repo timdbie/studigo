@@ -28,7 +28,12 @@ public class IndexModel : PageModel
         
         foreach (var trip in tripsDto.Trips)
         {
-            trips.Add(TripViewModel.FromDto(trip));    
+            string refUrl = $"#/?fromStation={fromStation}&toStation={toStation}&dateTime={dateTime}";
+
+            TripViewModel tripViewModel = TripViewModel.FromDto(trip);
+            tripViewModel.Ref = refUrl;
+        
+            trips.Add(tripViewModel);
         }
 
         return Partial("_TripsPartial", trips);

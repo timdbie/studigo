@@ -4,6 +4,7 @@ namespace StudiGO.Models
 {
     public class TripViewModel
     {
+        public string Ref { get; set; }
         public string Context { get; set; }
         public string PlannedDuration { get; set; }
         public string ActualDuration { get; set; }

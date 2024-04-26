@@ -4,7 +4,7 @@
 
 @foreach (var trip in Model)
 {
-    <a class="trips_result" href="#">
+    <a class="trips_result" href="@trip.Ref&context=@trip.Context">
         <div class="trips_row">
             <div class="trips_times">
                 <span class="trips_timespan">@trip.PlannedDepartureTime</span>
