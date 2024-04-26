@@ -46,25 +46,23 @@ async function updateContent() {
 }
 
 async function fetchTrips(fromStation, toStation, dateTime) {
-    const trips = await $.ajax({
+    return $.ajax({
         url: "?handler=Trips",
         type: "GET",
-        data: { 
+        data: {
             fromStation: fromStation,
             toStation: toStation,
             dateTime: dateTime,
         }
     });
-    return trips;
 }
 
 async function fetchTripDetails(context) {
-    const tripDetails = await $.ajax({
+    return $.ajax({
         url: "?handler=TripDetails",
         type: "GET",
         data: { context: context }
     })
-    return tripDetails;
 }
 
 updateContent();
