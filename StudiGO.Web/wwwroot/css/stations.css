@@ -17,6 +17,7 @@
   position: absolute;
   z-index: 99;
   margin-top: 5px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 .stations_search .stations_results div {
   width: 100%;
