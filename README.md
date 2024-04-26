@@ -22,3 +22,4 @@ This repository is organized to manage the project efficiently. To ensure a stru
 
 ## Contributing
 As this is a individual project, this will be managed by myself alone.
+
