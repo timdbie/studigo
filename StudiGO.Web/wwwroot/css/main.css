@@ -45,6 +45,9 @@
   font-weight: 600;
   font-size: 16px;
 }
+.planner .planner_content .planner_form .planner_search .stations_search svg {
+  font-size: 28px;
+}
 .planner .planner_content .planner_form .planner_search .planner_switch {
   width: 55px;
   height: 55px;
@@ -77,6 +80,7 @@
   position: absolute;
   border-radius: 5px;
   color: white;
+  font-size: 24px;
 }
 .planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_date input,
 .planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_time input {
