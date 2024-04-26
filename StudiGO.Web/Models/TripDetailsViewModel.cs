@@ -10,7 +10,7 @@ namespace StudiGO.Models
         {
             public Endpoint Origin { get; set; }
             public Endpoint Destination { get; set; }
-            public List<string> TransferMessages { get; set; }
+            public List<string>? TransferMessages { get; set; }
             public List<string> Notes { get; set; }
         }
 

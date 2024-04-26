@@ -18,7 +18,7 @@ public class IndexModel : PageModel
         _tripsService = tripsService;
         _singleTripService = singleTripService;
     }
-
+    
     public async Task<IActionResult> OnGetTripsAsync(string? fromStation, string? toStation, string? date, string? time)
     {
         string dateTime = date + "T" + time;
@@ -30,8 +30,8 @@ public class IndexModel : PageModel
         {
             trips.Add(TripViewModel.FromDto(trip));    
         }
-        
-        return new JsonResult(trips);
+
+        return Partial("_TripsPartial", trips);
     }
     
     public async Task<IActionResult> OnGetTripDetailsAsync(string context)
@@ -39,7 +39,8 @@ public class IndexModel : PageModel
         var singleTripDto = await _singleTripService.GetSingleTripAsync(context);
         
         TripDetailsViewModel tripDetails = TripDetailsViewModel.FromDto(singleTripDto);
-        return new JsonResult(tripDetails);
+
+        return Partial("_TripDetailsPartial", tripDetails);
     }
     
     public async Task<IActionResult> OnGetStationsAsync(string query)

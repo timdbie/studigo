@@ -37,10 +37,10 @@ async function updateContent() {
         }
         
         if(trips) {
-            createTrips(trips, tripsParam);
+            $(".trips_results").html(trips);
         }
         if(tripDetails) {
-            createTripDetails(tripDetails);
+            $(".trips_legs").html(tripDetails);
         }
     }
 }
@@ -55,7 +55,6 @@ async function fetchTrips(fromStation, toStation, dateTime) {
             dateTime: dateTime,
         }
     });
-    console.log(trips);
     return trips;
 }
 
@@ -65,7 +64,6 @@ async function fetchTripDetails(context) {
         type: "GET",
         data: { context: context }
     })
-    console.log(tripDetails);
     return tripDetails;
 }
 
