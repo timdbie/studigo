@@ -1,11 +1,15 @@
-$default_fontsize: 14px
+$default_fontsize: 16px
+
+$main: #606060
+
 
 .planner
   width: 100%
+  height: 250px
   background-color: gray
   display: flex
   justify-content: center
-  padding: 30px 0
+  align-items: center
   
   .planner_content
     width: 100%
@@ -28,12 +32,15 @@ $default_fontsize: 14px
         display: flex
         justify-content: space-between
         align-items: center
+        margin-bottom: 15px
         
         .stations_search
           flex: 1
           
           input
             padding: 0 10px 0 50px
+            font-size: $default_fontsize
+            border-radius: 6px
           
           label
             width: 50px
@@ -44,15 +51,65 @@ $default_fontsize: 14px
             align-items: center
             font-weight: 600
             font-size: $default_fontsize
+            
+          svg
+            font-size: 28px
           
         .planner_switch
           width: 55px
           height: 55px
+          display: flex
+          justify-content: center
+          align-items: center
           border-radius: 55px
           background-color: darkgray
           margin: 0 20px
           cursor: pointer
+          font-size: 40px
+          color: white
+          
+      .planner_buttons
+        width: 100%
+        height: 40px
+        display: flex
+        justify-content: space-between
+        
+        .planner_datetime
+          display: flex
+          
+          .planner_date,
+          .planner_time
+            position: relative
             
+            label
+              width: 40px
+              height: 40px
+              display: flex
+              justify-content: center
+              align-items: center
+              background-color: darkgray
+              position: absolute
+              border-radius: 6px
+              color: white
+              font-size: 24px
+          
+            input
+              height: 40px
+              border-radius: 6px
+              border: 0
+              font-size: $default_fontsize
+              margin-right: 10px
+              padding: 0 10px 0 50px
+        
+        .planner_submit
+          width: 150px
+          background-color: $main
+          color: white
+          border-radius: 6px
+          border: 0
+          font-size: $default_fontsize
+          font-weight: 600
+          cursor: pointer
 .trips
   width: 100%
   display: flex
@@ -71,36 +128,54 @@ $default_fontsize: 14px
       
       .trips_result
         width: 100%
-        height: 80px
+        height: 90px
         color: black
         background-color: white
-        margin-bottom: 20px
-        border-radius: 4px
-        padding: 0 20px
+        margin-bottom: 10px
+        border-radius: 6px
+        padding: 10px 20px
         display: flex
         flex-direction: column
-        justify-content: center
+        justify-content: space-evenly
         align-items: center
         text-decoration: none
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1)
         
         .trips_row
           width: 100%
           display: flex
           justify-content: space-between
-          
-          .trips_times
             
-            .trips_timespan
+          div
+            display: flex
+            align-items: center
+            
+          .trips_times 
+            span
               font-size: 18px
               font-weight: 600
+            svg
+              margin: 0 5px
+              
+          .trips_transport
+            svg
+              font-size: 24px
+              color: gray
+              margin-right: 5px
+              
+          .trips_info
+            svg
+              font-size: $default_fontsize + 2px
+              margin: 0 5px 0 10px
     
     .trips_details
       width: 50%
       background-color: white
       margin-left: 10px
-      border-radius: 4px
+      border-radius: 6px
       height: fit-content
       padding-bottom: 30px
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1)
       
       .trips_title
         width: 100%
@@ -129,6 +204,10 @@ $default_fontsize: 14px
             justify-content: space-between
             align-items: center
             flex-direction: column
+            
+            svg
+              font-size: 42px
+              color: gray
               
             span
               font-size: 18px
@@ -191,7 +270,6 @@ $default_fontsize: 14px
               &:nth-child(3)
                 bottom: -5px
                 
-                
             .trips_notes
               flex: 1
               display: flex
@@ -199,7 +277,7 @@ $default_fontsize: 14px
               flex-direction: column
               border-top: 1px solid lightgray
               border-bottom: 1px solid lightgray
-              margin: 20px 0
+              margin: 10px 0
               font-size: $default_fontsize
               
         .trips_transfer
@@ -213,6 +291,10 @@ $default_fontsize: 14px
             display: flex
             justify-content: center
             align-items: center
+
+            svg
+              font-size: 42px
+              color: gray
             
           .trips_transfer_graphic
             width: 13px
@@ -233,3 +315,12 @@ $default_fontsize: 14px
             margin: 20px 0
             font-size: $default_fontsize
             padding: 0 30px
+            
+            div
+              display: flex
+              align-items: center
+              border-radius: 6px
+              height: 40px
+              background-color: lightgray
+              padding: 0 10px
+              font-weight: 600

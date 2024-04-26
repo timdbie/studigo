@@ -1,4 +1,4 @@
-﻿var prevFromStation, prevToStation, prevDateTime, prevContext;
+﻿var storedParams = storedParams || {};
 
 async function updateContent() {
     var hashParams = window.location.hash.substring(2);
@@ -8,35 +8,40 @@ async function updateContent() {
     var toStation = params.get('toStation');
     var dateTime = params.get('dateTime');
     var context = params.get('context');
+    
+    var tripParamsChanged = fromStation !== storedParams.fromStation || toStation !== storedParams.toStation || dateTime !== storedParams.dateTime;
+    var contextParamsChanged = context !== storedParams.context;
 
-    var tripsParamsChanged = fromStation !== prevFromStation || toStation !== prevToStation || dateTime !== prevDateTime;
-    var contextParamsChanged = context !== prevContext;
-
-    prevFromStation = fromStation;
-    prevToStation = toStation;
-    prevDateTime = dateTime;
-    prevContext = context;
+    storedParams = {
+        fromStation : fromStation,
+        toStation : toStation,
+        dateTime : dateTime,
+        context : context,
+    }
 
     if (fromStation && toStation && dateTime) {
-        if (tripsParamsChanged) {
+        if (tripParamsChanged) {
             var trips = await fetchTrips(fromStation, toStation, dateTime)
             var tripsParam = params;
 
             if (context) {
                 tripsParam.delete("context")
             }
-            
+        }
+        if (context) {
+            if (contextParamsChanged) {
+                var tripDetails = await fetchTripDetails(context);
+            }
+        } else {
+            $(".trips_legs").empty();
+        }
+        
+        if(trips) {
             createTrips(trips, tripsParam);
         }
-    }
-
-    if (context) {
-        if (contextParamsChanged) {
-            var tripDetails = await fetchTripDetails(context);
+        if(tripDetails) {
             createTripDetails(tripDetails);
         }
-    } else {
-        $(".trips_legs").empty();
     }
 }
 

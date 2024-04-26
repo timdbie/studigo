@@ -1,9 +1,10 @@
 .planner {
   width: 100%;
+  height: 250px;
   background-color: gray;
   display: flex;
   justify-content: center;
-  padding: 30px 0;
+  align-items: center;
 }
 .planner .planner_content {
   width: 100%;
@@ -24,12 +25,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 15px;
 }
 .planner .planner_content .planner_form .planner_search .stations_search {
   flex: 1;
 }
 .planner .planner_content .planner_form .planner_search .stations_search input {
   padding: 0 10px 0 50px;
+  font-size: 16px;
+  border-radius: 6px;
 }
 .planner .planner_content .planner_form .planner_search .stations_search label {
   width: 50px;
@@ -39,14 +43,67 @@
   justify-content: center;
   align-items: center;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
+}
+.planner .planner_content .planner_form .planner_search .stations_search svg {
+  font-size: 28px;
 }
 .planner .planner_content .planner_form .planner_search .planner_switch {
   width: 55px;
   height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 55px;
   background-color: darkgray;
   margin: 0 20px;
+  cursor: pointer;
+  font-size: 40px;
+  color: white;
+}
+.planner .planner_content .planner_form .planner_buttons {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.planner .planner_content .planner_form .planner_buttons .planner_datetime {
+  display: flex;
+}
+.planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_date,
+.planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_time {
+  position: relative;
+}
+.planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_date label,
+.planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_time label {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgray;
+  position: absolute;
+  border-radius: 6px;
+  color: white;
+  font-size: 24px;
+}
+.planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_date input,
+.planner .planner_content .planner_form .planner_buttons .planner_datetime .planner_time input {
+  height: 40px;
+  border-radius: 6px;
+  border: 0;
+  font-size: 16px;
+  margin-right: 10px;
+  padding: 0 10px 0 50px;
+}
+.planner .planner_content .planner_form .planner_buttons .planner_submit {
+  width: 150px;
+  background-color: #606060;
+  color: white;
+  border-radius: 6px;
+  border: 0;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -68,34 +125,52 @@
 }
 .trips .trips_content .trips_results .trips_result {
   width: 100%;
-  height: 80px;
+  height: 90px;
   color: black;
   background-color: white;
-  margin-bottom: 20px;
-  border-radius: 4px;
-  padding: 0 20px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  padding: 10px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   text-decoration: none;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 .trips .trips_content .trips_results .trips_result .trips_row {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.trips .trips_content .trips_results .trips_result .trips_row .trips_times .trips_timespan {
+.trips .trips_content .trips_results .trips_result .trips_row div {
+  display: flex;
+  align-items: center;
+}
+.trips .trips_content .trips_results .trips_result .trips_row .trips_times span {
   font-size: 18px;
   font-weight: 600;
+}
+.trips .trips_content .trips_results .trips_result .trips_row .trips_times svg {
+  margin: 0 5px;
+}
+.trips .trips_content .trips_results .trips_result .trips_row .trips_transport svg {
+  font-size: 24px;
+  color: gray;
+  margin-right: 5px;
+}
+.trips .trips_content .trips_results .trips_result .trips_row .trips_info svg {
+  font-size: 18px;
+  margin: 0 5px 0 10px;
 }
 .trips .trips_content .trips_details {
   width: 50%;
   background-color: white;
   margin-left: 10px;
-  border-radius: 4px;
+  border-radius: 6px;
   height: fit-content;
   padding-bottom: 30px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 .trips .trips_content .trips_details .trips_title {
   width: 100%;
@@ -124,6 +199,10 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+}
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times svg {
+  font-size: 42px;
+  color: gray;
 }
 .trips .trips_content .trips_details .trips_legs .trips_leg .trips_times span {
   font-size: 18px;
@@ -194,8 +273,8 @@
   flex-direction: column;
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
-  margin: 20px 0;
-  font-size: 14px;
+  margin: 10px 0;
+  font-size: 16px;
 }
 .trips .trips_content .trips_details .trips_legs .trips_transfer {
   width: 100%;
@@ -208,6 +287,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.trips .trips_content .trips_details .trips_legs .trips_transfer .trips_transfer_icon svg {
+  font-size: 42px;
+  color: gray;
 }
 .trips .trips_content .trips_details .trips_legs .trips_transfer .trips_transfer_graphic {
   width: 13px;
@@ -226,8 +309,17 @@
   justify-content: center;
   flex-direction: column;
   margin: 20px 0;
-  font-size: 14px;
+  font-size: 16px;
   padding: 0 30px;
+}
+.trips .trips_content .trips_details .trips_legs .trips_transfer .trips_transfer_info div {
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  height: 40px;
+  background-color: lightgray;
+  padding: 0 10px;
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=main.css.map */

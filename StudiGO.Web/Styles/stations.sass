@@ -1,4 +1,4 @@
-$default_fontsize: 14px
+$default_fontsize: 16px
 
 .stations_search
   width: 300px
@@ -8,30 +8,49 @@ $default_fontsize: 14px
     width: 100%
     height: 40px
     padding: 0 10px
-    font-size: $default_fontsize
-    border-radius: 5px
     border: 0
     
   .stations_results
     width: 100%
-    max-height: 200px
+    max-height: 240px
     overflow-y: scroll
     background-color: white
-    border-radius: 5px
+    border-radius: 6px
     position: absolute
     z-index: 99
     margin-top: 5px
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1)
     
     div
       width: 100%
-      height: 50px
+      height: 60px
       display: flex
-      align-items: center
+      flex-direction: column
+      justify-content: center
       text-overflow: ellipsis
-      padding: 0 10px
+      padding: 0 10px 0 50px
       font-size: $default_fontsize
       transition: 0.3s
+      position: relative
+
+      label
+        width: 50px
+        height: 100%
+        position: absolute
+        left: 0
+        display: flex
+        justify-content: center
+        align-items: center
+        font-weight: 600
+        font-size: $default_fontsize
       
+      span
+        width: 100%
+      
+      span:nth-child(3)
+        opacity: 0.5
+        font-size: $default_fontsize - 2px
+        
       &:hover
         background-color: cornflowerblue
         color: white

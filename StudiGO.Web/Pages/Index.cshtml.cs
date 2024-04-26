@@ -18,8 +18,6 @@ public class IndexModel : PageModel
         _tripsService = tripsService;
         _singleTripService = singleTripService;
     }
-    
-    public List<TripViewModel> Trips { get; private set; }
 
     public async Task<IActionResult> OnGetTripsAsync(string? fromStation, string? toStation, string? date, string? time)
     {
