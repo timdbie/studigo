@@ -25,6 +25,9 @@ async function updateContent() {
         }
         if (context) {
             if (contextParamsChanged) {
+                $(".trips_result").removeClass("trip_result-selected");
+                $(".trips_result[href='#/" + hashParams + "']").addClass("trip_result-selected");
+                
                 var tripDetails = await fetchTripDetails(context);
             }
         } else {
@@ -33,6 +36,7 @@ async function updateContent() {
         
         if(trips) {
             $(".trips_results").html(trips);
+            $(".trips_result[href='#/" + hashParams + "']").addClass("trip_result-selected");
         }
         if(tripDetails) {
             $(".trips_legs").html(tripDetails);
