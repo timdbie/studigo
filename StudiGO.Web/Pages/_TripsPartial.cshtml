@@ -7,11 +7,19 @@
     <a class="trips_result" href="@trip.Ref&context=@trip.Context">
         <div class="trips_row">
             <div class="trips_times">
-                <span class="trips_timespan">@trip.PlannedDepartureTime</span>
+                <span>@trip.DepartureTime</span>
+                @if (trip.DepartureDelay > 0)
+                {
+                    <span class="trips_delay">+@trip.DepartureDelay</span>
+                }
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12h2.5M20 12l-6-6m6 6l-6 6m6-6H9.5" />
                 </svg>
-                <span class="trips_timespan">@trip.PlannedArrivalTime</span>
+                <span>@trip.ArrivalTime</span>
+                @if (trip.ArrivalDelay > 0)
+                {
+                    <span class="trips_delay">+@trip.ArrivalDelay</span>
+                }
             </div>
             <div class="trips_info">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
