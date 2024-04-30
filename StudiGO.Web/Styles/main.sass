@@ -157,6 +157,9 @@ $main: #606060
             svg
               margin: 0 5px
               
+            .trips_delay
+              color: red
+              
           .trips_transport
             svg
               font-size: 24px
@@ -167,6 +170,12 @@ $main: #606060
             svg
               font-size: $default_fontsize + 2px
               margin: 0 5px 0 10px
+              
+            .trips_duration-delayed
+              color: red
+              
+      .trip_result-selected
+        outline: 2px solid cornflowerblue
     
     .trips_details
       width: 50%
@@ -209,17 +218,26 @@ $main: #606060
               font-size: 42px
               color: gray
               
-            span
+            .trips_time
+              display: flex
+              flex-direction: column
               font-size: 18px
               font-weight: 600
+              position: relative
               
               &:nth-child(1)
-                position: relative
-                top: -5px
+                top: -6px
                 
-              &:nth-child(2)
-                position: relative
-                bottom: -5px
+              &:nth-child(3)
+                bottom: -6px
+              
+              span
+                color: red
+                font-size: 16px
+                font-weight: bold
+                position: absolute
+                right: 0
+                bottom: -14px
               
           .trips_graphic
             height: 100%

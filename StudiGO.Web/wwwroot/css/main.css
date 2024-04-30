@@ -154,6 +154,9 @@
 .trips .trips_content .trips_results .trips_result .trips_row .trips_times svg {
   margin: 0 5px;
 }
+.trips .trips_content .trips_results .trips_result .trips_row .trips_times .trips_delay {
+  color: red;
+}
 .trips .trips_content .trips_results .trips_result .trips_row .trips_transport svg {
   font-size: 24px;
   color: gray;
@@ -162,6 +165,12 @@
 .trips .trips_content .trips_results .trips_result .trips_row .trips_info svg {
   font-size: 18px;
   margin: 0 5px 0 10px;
+}
+.trips .trips_content .trips_results .trips_result .trips_row .trips_info .trips_duration-delayed {
+  color: red;
+}
+.trips .trips_content .trips_results .trip_result-selected {
+  outline: 2px solid cornflowerblue;
 }
 .trips .trips_content .trips_details {
   width: 50%;
@@ -204,17 +213,26 @@
   font-size: 42px;
   color: gray;
 }
-.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times span {
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times .trips_time {
+  display: flex;
+  flex-direction: column;
   font-size: 18px;
   font-weight: 600;
-}
-.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times span:nth-child(1) {
   position: relative;
-  top: -5px;
 }
-.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times span:nth-child(2) {
-  position: relative;
-  bottom: -5px;
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times .trips_time:nth-child(1) {
+  top: -6px;
+}
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times .trips_time:nth-child(3) {
+  bottom: -6px;
+}
+.trips .trips_content .trips_details .trips_legs .trips_leg .trips_times .trips_time span {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  bottom: -14px;
 }
 .trips .trips_content .trips_details .trips_legs .trips_leg .trips_graphic {
   height: 100%;
