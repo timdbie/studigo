@@ -166,6 +166,9 @@
   font-size: 18px;
   margin: 0 5px 0 10px;
 }
+.trips .trips_content .trips_results .trips_result .trips_row .trips_info .trips_duration-delayed {
+  color: red;
+}
 .trips .trips_content .trips_results .trip_result-selected {
   outline: 2px solid cornflowerblue;
 }
