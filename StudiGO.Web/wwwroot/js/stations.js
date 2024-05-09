@@ -2,7 +2,7 @@ var searchTimer;
 
 async function getStations(query) {
     return $.ajax({
-        url: "?handler=Stations",
+        url: "/Stations",
         type: "GET",
         data: { query: query }
     });
