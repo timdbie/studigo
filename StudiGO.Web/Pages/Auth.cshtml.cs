@@ -4,7 +4,7 @@ using Auth0.AspNetCore.Authentication;
 
 namespace StudiGO.Pages;
 
-public class Login : PageModel
+public class Auth : PageModel
 {
     public async Task OnGet(string returnUrl = "/")
     {
