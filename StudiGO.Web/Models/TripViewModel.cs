@@ -1,6 +1,6 @@
 ﻿using StudiGO.Core.DTOs;
 
-namespace StudiGO.Models
+namespace StudiGO.Web.Models
 {
     public class TripViewModel
     {
