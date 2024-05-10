@@ -1,35 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudiGO.Core.Services;
-using StudiGO.Models;
+using StudiGO.Web.Models;
 
-namespace StudiGO.Pages;
+namespace StudiGO.Web.Controllers;
 
-public class Trips : PageModel
+public class TripsController : Controller
 {
     private readonly TripsService _tripsService;
-    
-    public Trips(TripsService tripsService)
+
+    public TripsController(TripsService tripsService)
     {
         _tripsService = tripsService;
     }
 
-    public async Task<IActionResult> OnGetAsync(string fromStation, string toStation, string dateTime)
+    public async Task<IActionResult> Index(string fromStation, string toStation, string dateTime)
     {
         var tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
-        
-        List<TripViewModel> trips = new List<TripViewModel>();    
-        
+
+        List<TripViewModel> trips = new List<TripViewModel>();
+
         foreach (var trip in tripsDto.Trips)
         {
             string refUrl = $"#/?fromStation={fromStation}&toStation={toStation}&dateTime={dateTime}";
 
             TripViewModel tripViewModel = TripViewModel.FromDto(trip);
             tripViewModel.Ref = refUrl;
-        
+
             trips.Add(tripViewModel);
         }
 
-        return Partial("Partials/_TripsPartial", trips);
+        return PartialView("_TripsPartial", trips);
     }
 }
