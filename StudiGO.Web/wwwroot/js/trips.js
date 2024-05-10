@@ -42,9 +42,9 @@ async function updateContent() {
 
 async function fetchTrips(fromStation, toStation, dateTime) {
     return $.ajax({
-        url: "?handler=Trips",
+        url: "/Trips",
         type: "GET",
-        data: {
+        data: { 
             fromStation: fromStation,
             toStation: toStation,
             dateTime: dateTime,
@@ -54,7 +54,7 @@ async function fetchTrips(fromStation, toStation, dateTime) {
 
 async function fetchTripDetails(context) {
     return $.ajax({
-        url: "?handler=TripDetails",
+        url: "/TripDetails",
         type: "GET",
         data: { context: context }
     })
