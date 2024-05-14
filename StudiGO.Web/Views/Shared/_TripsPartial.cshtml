@@ -1,6 +1,6 @@
-﻿@model List<TripViewModel>
+﻿@model TripsViewModel
 
-@foreach (var trip in Model)
+@foreach (var trip in Model.Trips)
 {
     <a class="trips_result" href="@trip.Ref&context=@trip.Context">
         <div class="trips_row">

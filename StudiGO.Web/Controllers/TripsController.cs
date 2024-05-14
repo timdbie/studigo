@@ -17,18 +17,14 @@ public class TripsController : Controller
     {
         var tripsDto = await _tripsService.GetTripsAsync(fromStation, toStation, dateTime);
 
-        List<TripViewModel> trips = new List<TripViewModel>();
+        TripsViewModel tripsViewModel = TripsViewModel.FromDto(tripsDto);
 
-        foreach (var trip in tripsDto.Trips)
+        foreach (var trip in tripsViewModel.Trips)
         {
             string refUrl = $"#/?fromStation={fromStation}&toStation={toStation}&dateTime={dateTime}";
-
-            TripViewModel tripViewModel = TripViewModel.FromDto(trip);
-            tripViewModel.Ref = refUrl;
-
-            trips.Add(tripViewModel);
+            trip.Ref = refUrl;
         }
 
-        return PartialView("_TripsPartial", trips);
+        return PartialView("_TripsPartial", tripsViewModel);
     }
 }
