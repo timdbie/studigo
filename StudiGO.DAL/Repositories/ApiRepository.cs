@@ -5,8 +5,8 @@ namespace StudiGO.DAL.Repositories
 {
     public class ApiRepository
     {
-        private static readonly HttpClientWrapper _httpClientWrapper = new();
-        private static readonly string _baseUrl = "https://gateway.apiportal.ns.nl/reisinformatie-api/api";
+        private readonly HttpClientWrapper _httpClientWrapper = new();
+        private readonly string _baseUrl = "https://gateway.apiportal.ns.nl/reisinformatie-api/api";
 
         private readonly string _subscriptionKey;
 
