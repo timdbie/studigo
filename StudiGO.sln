@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudiGO.DAL", "StudiGO.DAL\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudiGO.Web", "StudiGO.Web\StudiGO.Web.csproj", "{A2739488-7C1D-45C3-A2B5-4C2B600EB46C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudiGO.Test", "StudiGO.Test\StudiGO.Test.csproj", "{24E913E2-3BF0-42B7-B811-2B23AD46792C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{A2739488-7C1D-45C3-A2B5-4C2B600EB46C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2739488-7C1D-45C3-A2B5-4C2B600EB46C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2739488-7C1D-45C3-A2B5-4C2B600EB46C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24E913E2-3BF0-42B7-B811-2B23AD46792C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24E913E2-3BF0-42B7-B811-2B23AD46792C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24E913E2-3BF0-42B7-B811-2B23AD46792C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24E913E2-3BF0-42B7-B811-2B23AD46792C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

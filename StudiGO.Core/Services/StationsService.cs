@@ -5,16 +5,16 @@ namespace StudiGO.Core.Services;
 
 public class StationsService
 {
-    private readonly IApiRepository _apiRepository;
+    private readonly IStationsRepository _stationsRepository;
 
-    public StationsService(IApiRepository apiRepository)
+    public StationsService(IStationsRepository stationsRepository)
     {
-        _apiRepository = apiRepository;
+        _stationsRepository = stationsRepository;
     }
     
-    public async Task<StationsDto> GetFilteredStationsAsync(string query, string countryCode, int limit)
+    public async Task<StationsDto> GetFilteredStationsAsync(string query, int limit)
     {
-        var stationsDto = await _apiRepository.GetStationsAsync(query, countryCode, limit);
+        var stationsDto = await _stationsRepository.GetStationsAsync(query, limit);
         
         List<Payload> filteredPayload = stationsDto.payload.ToList();
         

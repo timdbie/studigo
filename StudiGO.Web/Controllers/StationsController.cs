@@ -16,7 +16,7 @@ public class StationsController : Controller
     {
         if (!string.IsNullOrEmpty(query))
         {
-            var stationsDto = await _stationsService.GetFilteredStationsAsync(query, "NL", 10);
+            var stationsDto = await _stationsService.GetFilteredStationsAsync(query, 10);
             return PartialView("_StationsPartial", stationsDto);
         }
             
