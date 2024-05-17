@@ -23,21 +23,28 @@ public class StationsServiceTests
     {
         string query = "Amsterdam";
         int limit = 10;
-        
-        var payload = new List<Payload>
-        {
-            new Payload { Namen = new Namen { Lang = "Amsterdam Centraal" } },
-            new Payload { Namen = new Namen { Lang = "Amsterdam Sloterdijk" } },
-        };
-        
-        var stationsDto = new StationsDto { payload = payload };
+        var expectedStationsDto = new StationsDto { payload = [] };
 
         _stationsRepositoryMock.Setup(r => r.GetStationsAsync(query, limit))
-            .ReturnsAsync(stationsDto);
+            .ReturnsAsync(expectedStationsDto);
         
         await _stationsService.GetFilteredStationsAsync(query, limit);
         
         _stationsRepositoryMock.Verify(r => r.GetStationsAsync(query, limit), Times.Once);
     }
-
+    
+    [Test]
+    public async Task GetStationsAsync_WithValidInput_ReturnsStationsDto()
+    {
+        string query = "Amsterdam";
+        int limit = 10;
+        var expectedStationsDto = new StationsDto { payload = [] };
+        
+        _stationsRepositoryMock.Setup(r => r.GetStationsAsync(query, limit))
+            .ReturnsAsync(expectedStationsDto);
+        
+        var result = await _stationsService.GetFilteredStationsAsync(query, limit);
+        
+        Assert.That(result, Is.EqualTo(expectedStationsDto));
+    }
 }
