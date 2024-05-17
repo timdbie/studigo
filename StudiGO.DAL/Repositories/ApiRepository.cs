@@ -41,9 +41,9 @@ namespace StudiGO.DAL.Repositories
             return subscriptionKey;
         }
 
-        public async Task<StationsDto> GetStationsAsync(string query, string countryCode, int limit)
+        public async Task<StationsDto> GetStationsAsync(string query, int limit)
         {
-            string endpoint = $"/v2/stations?q={query}&countryCodes={countryCode}&limit={limit}";
+            string endpoint = $"/v2/stations?q={query}&countryCodes=NL&limit={limit}";
             return await GetApiResponseAsync<StationsDto>(endpoint);
         }
 

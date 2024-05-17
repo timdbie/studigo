@@ -12,9 +12,9 @@ public class StationsService
         _apiRepository = apiRepository;
     }
     
-    public async Task<StationsDto> GetFilteredStationsAsync(string query, string countryCode, int limit)
+    public async Task<StationsDto> GetFilteredStationsAsync(string query, int limit)
     {
-        var stationsDto = await _apiRepository.GetStationsAsync(query, countryCode, limit);
+        var stationsDto = await _apiRepository.GetStationsAsync(query, limit);
         
         List<Payload> filteredPayload = stationsDto.payload.ToList();
         
