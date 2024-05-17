@@ -3,7 +3,7 @@ using StudiGO.Core.Interfaces;
 using StudiGO.Core.Services;
 using StudiGO.Core.DTOs;
 
-namespace StudiGO.Test;
+namespace StudiGO.Test.UnitTests;
 
 [TestFixture]
 public class TripsServiceTests
