@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
 using StudiGO.Core.Interfaces;
 using StudiGO.Core.Services;
 using StudiGO.Core.DTOs;
@@ -10,12 +11,14 @@ public class SingleTripServiceTests
 {
     private SingleTripService _singleTripService;
     private Mock<ISingleTripRepository> _singleTripRepositoryMock;
-    
+    private Mock<ILogger<SingleTripService>> _loggerMock;
+
     [SetUp]
     public void Setup()
     {
         _singleTripRepositoryMock = new Mock<ISingleTripRepository>();
-        _singleTripService = new SingleTripService(_singleTripRepositoryMock.Object);
+        _loggerMock = new Mock<ILogger<SingleTripService>>();
+        _singleTripService = new SingleTripService(_singleTripRepositoryMock.Object, _loggerMock.Object);
     }
     
     [Test]
