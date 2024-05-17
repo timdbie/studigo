@@ -5,16 +5,16 @@ namespace StudiGO.Core.Services;
 
 public class TripsService
 {
-    private readonly IApiRepository _apiRepository;
+    private readonly ITripsRepository _tripsRepository;
 
-    public TripsService(IApiRepository apiRepository)
+    public TripsService(ITripsRepository tripsRepository)
     {
-        _apiRepository = apiRepository;
+        _tripsRepository = tripsRepository;
     }
     
     public async Task<TripsDto> GetTripsAsync(string fromStation, string toStation, string dateTime)
     {
-        var tripsDto = await _apiRepository.GetTripsAsync(fromStation, toStation, dateTime);
+        var tripsDto = await _tripsRepository.GetTripsAsync(fromStation, toStation, dateTime);
         
         return tripsDto;
     }
