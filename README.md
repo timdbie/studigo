@@ -1,3 +1,5 @@
+[![CI and CD](https://github.com/timdbie/studigo/actions/workflows/dotnet.yml/badge.svg)](https://github.com/timdbie/studigo/actions/workflows/dotnet.yml)
+
 # StudiGO
 
 This repository serves as the personal code-base for my individual project "StudiGO".
