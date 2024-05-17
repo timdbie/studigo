@@ -10,12 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 8.0.x
+
       - name: Restore dependencies
         run: dotnet restore
+
       - name: Build
         run: dotnet build --no-restore
   
@@ -24,12 +27,14 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v3
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 8.0.x
+
       - name: Test
-        run: cd StudiGO.Test && dotnet test --verbosity minimal
+        run: cd StudiGO.Test && dotnet test --verbosity normal
 
   deploy:
     runs-on: ubuntu-latest
@@ -37,13 +42,18 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
+
       - name: Build docker image
         run: docker build . --file Dockerfile --tag ${{secrets.REGISTRY_HOST}}/studigo
+
       - name: Add commit tag
         run: docker tag ${{secrets.REGISTRY_HOST}}/studigo ${{secrets.REGISTRY_HOST}}/studigo:${{github.sha}}
+
       - name: Add latest tag
         run: docker tag ${{secrets.REGISTRY_HOST}}/studigo ${{secrets.REGISTRY_HOST}}/studigo:latest
+
       - name: Login to registry
         run: echo "${{secrets.REGISTRY_PASSWORD}}" | docker login -u ${{secrets.REGISTRY_USERNAME}} --password-stdin ${{secrets.REGISTRY_HOST}}
+
       - name: Push to registry
         run: docker push -a ${{secrets.REGISTRY_HOST}}/studigo
