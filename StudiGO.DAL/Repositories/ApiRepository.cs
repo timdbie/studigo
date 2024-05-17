@@ -22,23 +22,33 @@ namespace StudiGO.DAL.Repositories
                 { "Ocp-Apim-Subscription-Key", _subscriptionKey }
             };
 
-            HttpResponseMessage response = await _httpClientWrapper.GetAsync(_baseUrl + endpoint, headers).ConfigureAwait(false);
-            
-            // status code 200
+            HttpResponseMessage response =
+                await _httpClientWrapper.GetAsync(_baseUrl + endpoint, headers).ConfigureAwait(false);
+
             if (response.IsSuccessStatusCode)
             {
                 return response;
             }
-            //status code 400
-            else if (response.StatusCode == HttpStatusCode.BadRequest)
+            
+            string errorMessage;
+
+            switch (response.StatusCode)
             {
-                string errorMessage = $"Bad request encountered at endpoint: {endpoint}";
-                throw new HttpRequestException(errorMessage);
-            }
-            else
-            {
-                string errorMessage = $"Failed to retrieve data from endpoint: {endpoint}. Status code: {response.StatusCode}";
-                throw new HttpRequestException(errorMessage); 
+                case HttpStatusCode.BadRequest:
+                    errorMessage = $"Bad request encountered at endpoint: {endpoint}";
+                    throw new HttpRequestException(errorMessage);
+
+                case HttpStatusCode.Unauthorized:
+                    errorMessage = "Unauthorized. Check your API subscription key.";
+                    throw new HttpRequestException(errorMessage);
+
+                case HttpStatusCode.NotFound:
+                    errorMessage = $"The resource at endpoint {endpoint} was not found.";
+                    throw new HttpRequestException(errorMessage);
+
+                default:
+                    errorMessage = $"Failed to retrieve data from endpoint: {endpoint}. Status code: {response.StatusCode}";
+                    throw new HttpRequestException(errorMessage);
             }
         }
 
