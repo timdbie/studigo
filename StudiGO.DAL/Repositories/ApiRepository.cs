@@ -1,3 +1,4 @@
+using System.Net;
 using StudiGO.DAL.Infrastructure;
 using StudiGO.Core.DTOs;
 using Newtonsoft.Json;
@@ -17,7 +18,7 @@ namespace StudiGO.DAL.Repositories
             _subscriptionKey = GetSubscriptionKey();
         }
 
-        public async Task<T> GetApiResponseAsync<T>(string endpoint)
+        public async Task<HttpResponseMessage> GetApiResponseAsync(string endpoint)
         {
             var headers = new Dictionary<string, string>
             {
@@ -25,10 +26,8 @@ namespace StudiGO.DAL.Repositories
             };
 
             HttpResponseMessage response = await _httpClientWrapper.GetAsync(_baseUrl + endpoint, headers).ConfigureAwait(false);
-            response.EnsureSuccessStatusCode();
-
-            string jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<T>(jsonResponse);
+            
+            return response;
         }
 
         private string GetSubscriptionKey()
