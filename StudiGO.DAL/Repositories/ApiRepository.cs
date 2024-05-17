@@ -57,6 +57,7 @@ namespace StudiGO.DAL.Repositories
             string subscriptionKey = Environment.GetEnvironmentVariable("STUDIGO_SUBSCRIPTION_KEY");
             if (string.IsNullOrEmpty(subscriptionKey))
             {
+                // TODO: Catch!!
                 throw new InvalidOperationException("STUDIGO_SUBSCRIPTION_KEY is missing or empty.");
             }
             return subscriptionKey;
