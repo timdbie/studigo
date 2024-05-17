@@ -7,7 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IApiRepository, ApiRepository>();
+builder.Services.AddScoped<IStationsRepository, StationsRepository>();
+builder.Services.AddScoped<ITripsRepository, TripsRepository>();
+builder.Services.AddScoped<ISingleTripRepository, SingleTripRepository>();
+
 builder.Services.AddScoped<StationsService>();
 builder.Services.AddScoped<TripsService>();
 builder.Services.AddScoped<SingleTripService>();
