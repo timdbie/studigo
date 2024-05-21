@@ -25,12 +25,11 @@ public class StationsServiceTests
     public async Task GetStationsAsync_WithValidInput_CallsStationsRepository()
     {
         string query = "Amsterdam";
-        int limit = 10;
         var expectedStationsDto = new StationsDto { Payload = [] };
 
         _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
             .ReturnsAsync(expectedStationsDto);
-        
+
         await _stationsService.GetFilteredStationsAsync(query);
         
         _stationsRepositoryMock.Verify(r => r.GetStationsAsync(), Times.Once);
@@ -40,7 +39,6 @@ public class StationsServiceTests
     public async Task GetStationsAsync_WithValidInput_ReturnsStationsDto()
     {
         string query = "Amsterdam";
-        int limit = 10;
         var expectedStationsDto = new StationsDto { Payload = [] };
         
         _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
@@ -49,5 +47,44 @@ public class StationsServiceTests
         var result = await _stationsService.GetFilteredStationsAsync(query);
         
         Assert.That(result, Is.EqualTo(expectedStationsDto));
+    }
+
+    [Test]
+    public async Task GetFilteredStationsAsync_WithMatchingQuery_ReturnsFilteredStations()
+    {
+        string query = "Amsterdam";
+        var expectedPayload = new List<Payload>
+        {
+            new Payload { Namen = new Namen { Lang = "Amsterdam Centraal" } },
+            new Payload { Namen = new Namen { Lang = "Amsterdam Zuid" } }
+        };
+        var stationsDto = new StationsDto { Payload = expectedPayload };
+
+        _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
+            .ReturnsAsync(stationsDto);
+
+        var result = await _stationsService.GetFilteredStationsAsync(query);
+
+        Assert.That(result.Payload.Count, Is.EqualTo(2));
+        Assert.That(result.Payload.All(p => p.Namen.Lang.StartsWith(query, StringComparison.OrdinalIgnoreCase)), Is.True);
+    }
+
+    [Test]
+    public async Task GetFilteredStationsAsync_WithNoMatchingQuery_ReturnsEmptyList()
+    {
+        string query = "Rotterdam";
+        var initialPayload = new List<Payload>
+        {
+            new Payload { Namen = new Namen { Lang = "Amsterdam Centraal" } },
+            new Payload { Namen = new Namen { Lang = "Amsterdam Zuid" } }
+        };
+        var stationsDto = new StationsDto { Payload = initialPayload };
+
+        _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
+            .ReturnsAsync(stationsDto);
+
+        var result = await _stationsService.GetFilteredStationsAsync(query);
+
+        Assert.That(result.Payload, Is.Empty);
     }
 }
