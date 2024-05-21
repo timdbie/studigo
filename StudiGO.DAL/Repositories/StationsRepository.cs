@@ -6,9 +6,9 @@ namespace StudiGO.DAL.Repositories;
 
 public class StationsRepository : ApiRepository, IStationsRepository
 {
-    public async Task<StationsDto> GetStationsAsync(string query, int limit)
+    public async Task<StationsDto> GetStationsAsync()
     {
-        string endpoint = $"/v2/stations?q={query}&countryCodes=NL&limit={limit}";
+        string endpoint = $"/v2/stations?";
         HttpResponseMessage response = await GetApiResponseAsync(endpoint);
         
         string jsonResponse = await response.Content.ReadAsStringAsync();

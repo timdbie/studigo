@@ -14,28 +14,33 @@ public class StationsService
         _stationsRepository = stationsRepository;
         _logger = logger;
     }
+
+    public async Task<StationsDto> GetFilteredStationsAsync(string query)
+    {
+        var stations = await GetAllStationsAsync();
+
+        List<Payload> filteredPayload = stations.payload.ToList();
+
+        foreach (var payload in stations.payload)
+        {
+            var namen = payload.Namen;
+
+            if (!namen.Lang.StartsWith(query, StringComparison.OrdinalIgnoreCase))
+            {
+                filteredPayload.Remove(payload);
+            }
+        }
+
+        stations.payload = filteredPayload;
+
+        return stations;
+    }
     
-    public async Task<StationsDto> GetFilteredStationsAsync(string query, int limit)
+    private async Task<StationsDto> GetAllStationsAsync()
     {
         try
         {
-            var stationsDto = await _stationsRepository.GetStationsAsync(query, limit);
-
-            List<Payload> filteredPayload = stationsDto.payload.ToList();
-
-            foreach (var payload in stationsDto.payload)
-            {
-                var namen = payload.Namen;
-
-                if (!namen.Lang.StartsWith(query, StringComparison.OrdinalIgnoreCase))
-                {
-                    filteredPayload.Remove(payload);
-                }
-            }
-
-            stationsDto.payload = filteredPayload;
-
-            return stationsDto;
+            return await _stationsRepository.GetStationsAsync();;
         }
         catch (HttpRequestException ex)
         {

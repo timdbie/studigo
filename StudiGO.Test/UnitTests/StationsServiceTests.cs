@@ -28,12 +28,12 @@ public class StationsServiceTests
         int limit = 10;
         var expectedStationsDto = new StationsDto { payload = [] };
 
-        _stationsRepositoryMock.Setup(r => r.GetStationsAsync(query, limit))
+        _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
             .ReturnsAsync(expectedStationsDto);
         
-        await _stationsService.GetFilteredStationsAsync(query, limit);
+        await _stationsService.GetFilteredStationsAsync(query);
         
-        _stationsRepositoryMock.Verify(r => r.GetStationsAsync(query, limit), Times.Once);
+        _stationsRepositoryMock.Verify(r => r.GetStationsAsync(), Times.Once);
     }
     
     [Test]
@@ -43,10 +43,10 @@ public class StationsServiceTests
         int limit = 10;
         var expectedStationsDto = new StationsDto { payload = [] };
         
-        _stationsRepositoryMock.Setup(r => r.GetStationsAsync(query, limit))
+        _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
             .ReturnsAsync(expectedStationsDto);
         
-        var result = await _stationsService.GetFilteredStationsAsync(query, limit);
+        var result = await _stationsService.GetFilteredStationsAsync(query);
         
         Assert.That(result, Is.EqualTo(expectedStationsDto));
     }
