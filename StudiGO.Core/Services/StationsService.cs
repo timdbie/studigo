@@ -19,9 +19,9 @@ public class StationsService
     {
         var stations = await GetAllStationsAsync();
 
-        List<Payload> filteredPayload = stations.payload.ToList();
+        List<Payload> filteredPayload = stations.Payload.ToList();
 
-        foreach (var payload in stations.payload)
+        foreach (var payload in stations.Payload)
         {
             var namen = payload.Namen;
 
@@ -31,7 +31,7 @@ public class StationsService
             }
         }
 
-        stations.payload = filteredPayload;
+        stations.Payload = filteredPayload;
 
         return stations;
     }

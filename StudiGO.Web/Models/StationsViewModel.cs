@@ -24,7 +24,7 @@ public class StationsViewModel
             Stations = new List<Station>()
         };
 
-        foreach (var station in stationsDto.payload)
+        foreach (var station in stationsDto.Payload)
         {
             Station newStation = new Station()
             {

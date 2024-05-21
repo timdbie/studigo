@@ -26,7 +26,7 @@ public class StationsServiceTests
     {
         string query = "Amsterdam";
         int limit = 10;
-        var expectedStationsDto = new StationsDto { payload = [] };
+        var expectedStationsDto = new StationsDto { Payload = [] };
 
         _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
             .ReturnsAsync(expectedStationsDto);
@@ -41,7 +41,7 @@ public class StationsServiceTests
     {
         string query = "Amsterdam";
         int limit = 10;
-        var expectedStationsDto = new StationsDto { payload = [] };
+        var expectedStationsDto = new StationsDto { Payload = [] };
         
         _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
             .ReturnsAsync(expectedStationsDto);
