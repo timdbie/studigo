@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using Moq;
 using StudiGO.Core.Interfaces;
 using StudiGO.Core.Services;
@@ -10,12 +11,14 @@ public class TripsServiceTests
 {
     private TripsService _tripsService;
     private Mock<ITripsRepository> _tripsRepositoryMock;
+    private Mock<ILogger<TripsService>> _logger;
 
     [SetUp]
     public void Setup()
     {
         _tripsRepositoryMock = new Mock<ITripsRepository>();
-        _tripsService = new TripsService(_tripsRepositoryMock.Object);
+        _logger = new Mock<ILogger<TripsService>>();
+        _tripsService = new TripsService(_tripsRepositoryMock.Object, _logger.Object);
     }
 
     [Test]

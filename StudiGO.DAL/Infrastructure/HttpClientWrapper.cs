@@ -1,9 +1,6 @@
-using System.Net.Http;
-using System.Threading.Tasks;
-
 namespace StudiGO.DAL.Infrastructure
 {
-    public class HttpClientWrapper
+    public class HttpClientWrapper : IDisposable
     {
         private readonly HttpClient _httpClient;
 
@@ -14,22 +11,20 @@ namespace StudiGO.DAL.Infrastructure
 
         public async Task<HttpResponseMessage> GetAsync(string requestUrl, Dictionary<string, string>? headers = null)
         {
-            try
+            if (headers != null)
             {
-                if (headers != null)
+                foreach (var header in headers)
                 {
-                    foreach (var header in headers)
-                    {
-                        _httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
-                    }
+                    _httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
                 }
+            }
 
-                return await _httpClient.GetAsync(requestUrl);
-            }
-            catch (HttpRequestException ex)
-            {
-                throw ex;
-            }
+            return await _httpClient.GetAsync(requestUrl);
+        }
+
+        public void Dispose()
+        {
+            _httpClient.Dispose();
         }
     }
 }
