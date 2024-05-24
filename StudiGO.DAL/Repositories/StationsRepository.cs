@@ -1,13 +1,17 @@
-﻿using StudiGO.Core.Interfaces;
+﻿using Newtonsoft.Json;
+using StudiGO.Core.Interfaces;
 using StudiGO.Core.DTOs;
 
 namespace StudiGO.DAL.Repositories;
 
 public class StationsRepository : ApiRepository, IStationsRepository
 {
-    public async Task<StationsDto> GetStationsAsync(string query, int limit)
+    public async Task<StationsDto> GetStationsAsync()
     {
-        string endpoint = $"/v2/stations?q={query}&countryCodes=NL&limit={limit}";
-        return await GetApiResponseAsync<StationsDto>(endpoint);
+        string endpoint = $"/v2/stations?";
+        HttpResponseMessage response = await GetApiResponseAsync(endpoint);
+        
+        string jsonResponse = await response.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<StationsDto>(jsonResponse);
     }
 }

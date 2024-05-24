@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
 using StudiGO.Core.Interfaces;
 using StudiGO.Core.Services;
 using StudiGO.Core.DTOs;
@@ -10,41 +11,88 @@ public class StationsServiceTests
 {
     private StationsService _stationsService;
     private Mock<IStationsRepository> _stationsRepositoryMock;
+    private Mock<ILogger<StationsService>> _loggerMock;
 
     [SetUp]
     public void Setup()
     {
         _stationsRepositoryMock = new Mock<IStationsRepository>();
-        _stationsService = new StationsService(_stationsRepositoryMock.Object);
+        _loggerMock = new Mock<ILogger<StationsService>>();
+        _stationsService = new StationsService(_stationsRepositoryMock.Object, _loggerMock.Object);
     }
 
     [Test]
     public async Task GetStationsAsync_WithValidInput_CallsStationsRepository()
     {
         string query = "Amsterdam";
+<<<<<<< HEAD
         int limit = 10;
+=======
+>>>>>>> 9b074c01666eb6da2c4cdad85d5a9c7008491e1f
         var expectedStationsDto = new StationsDto { Payload = [] };
 
-        _stationsRepositoryMock.Setup(r => r.GetStationsAsync(query, limit))
+        _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
             .ReturnsAsync(expectedStationsDto);
+
+        await _stationsService.GetFilteredStationsAsync(query);
         
-        await _stationsService.GetFilteredStationsAsync(query, limit);
-        
-        _stationsRepositoryMock.Verify(r => r.GetStationsAsync(query, limit), Times.Once);
+        _stationsRepositoryMock.Verify(r => r.GetStationsAsync(), Times.Once);
     }
     
     [Test]
     public async Task GetStationsAsync_WithValidInput_ReturnsStationsDto()
     {
         string query = "Amsterdam";
+<<<<<<< HEAD
         int limit = 10;
+=======
+>>>>>>> 9b074c01666eb6da2c4cdad85d5a9c7008491e1f
         var expectedStationsDto = new StationsDto { Payload = [] };
         
-        _stationsRepositoryMock.Setup(r => r.GetStationsAsync(query, limit))
+        _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
             .ReturnsAsync(expectedStationsDto);
         
-        var result = await _stationsService.GetFilteredStationsAsync(query, limit);
+        var result = await _stationsService.GetFilteredStationsAsync(query);
         
         Assert.That(result, Is.EqualTo(expectedStationsDto));
+    }
+
+    [Test]
+    public async Task GetFilteredStationsAsync_WithMatchingQuery_ReturnsFilteredStations()
+    {
+        string query = "Amsterdam";
+        var expectedPayload = new List<Payload>
+        {
+            new Payload { Namen = new Namen { Lang = "Amsterdam Centraal" } },
+            new Payload { Namen = new Namen { Lang = "Amsterdam Zuid" } }
+        };
+        var stationsDto = new StationsDto { Payload = expectedPayload };
+
+        _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
+            .ReturnsAsync(stationsDto);
+
+        var result = await _stationsService.GetFilteredStationsAsync(query);
+
+        Assert.That(result.Payload.Count, Is.EqualTo(2));
+        Assert.That(result.Payload.All(p => p.Namen.Lang.StartsWith(query, StringComparison.OrdinalIgnoreCase)), Is.True);
+    }
+
+    [Test]
+    public async Task GetFilteredStationsAsync_WithNoMatchingQuery_ReturnsEmptyList()
+    {
+        string query = "Rotterdam";
+        var initialPayload = new List<Payload>
+        {
+            new Payload { Namen = new Namen { Lang = "Amsterdam Centraal" } },
+            new Payload { Namen = new Namen { Lang = "Amsterdam Zuid" } }
+        };
+        var stationsDto = new StationsDto { Payload = initialPayload };
+
+        _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
+            .ReturnsAsync(stationsDto);
+
+        var result = await _stationsService.GetFilteredStationsAsync(query);
+
+        Assert.That(result.Payload, Is.Empty);
     }
 }
