@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudiGO.Core.Services;
+using StudiGO.Web.Models;
 
 namespace StudiGO.Web.Controllers;
 
@@ -14,12 +15,10 @@ public class StationsController : Controller
 
     public async Task<IActionResult> Index(string query)
     {
-        if (!string.IsNullOrEmpty(query))
-        {
-            var stationsDto = await _stationsService.GetFilteredStationsAsync(query, 10);
-            return PartialView("_StationsPartial", stationsDto);
-        }
-            
-        return BadRequest("Invalid query.");
+        var stationsDto = await _stationsService.GetFilteredStationsAsync(query);
+
+        StationsViewModel stationsViewModel = StationsViewModel.FromDto(stationsDto);
+        
+        return PartialView("_StationsPartial", stationsViewModel);
     }
 }

@@ -4,5 +4,5 @@ namespace StudiGO.Core.Interfaces;
 
 public interface IStationsRepository
 {
-    Task<StationsDto> GetStationsAsync(string query, int limit);
+    Task<StationsDto> GetStationsAsync();
 }

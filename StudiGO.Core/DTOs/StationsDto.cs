@@ -2,7 +2,7 @@ namespace StudiGO.Core.DTOs;
 
 public class StationsDto
 {
-    public List<Payload> payload { get; set; }
+    public List<Payload> Payload { get; set; }
 }
 
 public class Payload
