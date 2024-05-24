@@ -25,10 +25,6 @@ public class StationsServiceTests
     public async Task GetStationsAsync_WithValidInput_CallsStationsRepository()
     {
         string query = "Amsterdam";
-<<<<<<< HEAD
-        int limit = 10;
-=======
->>>>>>> 9b074c01666eb6da2c4cdad85d5a9c7008491e1f
         var expectedStationsDto = new StationsDto { Payload = [] };
 
         _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
@@ -43,10 +39,6 @@ public class StationsServiceTests
     public async Task GetStationsAsync_WithValidInput_ReturnsStationsDto()
     {
         string query = "Amsterdam";
-<<<<<<< HEAD
-        int limit = 10;
-=======
->>>>>>> 9b074c01666eb6da2c4cdad85d5a9c7008491e1f
         var expectedStationsDto = new StationsDto { Payload = [] };
         
         _stationsRepositoryMock.Setup(r => r.GetStationsAsync())
@@ -61,10 +53,10 @@ public class StationsServiceTests
     public async Task GetFilteredStationsAsync_WithMatchingQuery_ReturnsFilteredStations()
     {
         string query = "Amsterdam";
-        var expectedPayload = new List<Payload>
+        var expectedPayload = new List<Station>
         {
-            new Payload { Namen = new Namen { Lang = "Amsterdam Centraal" } },
-            new Payload { Namen = new Namen { Lang = "Amsterdam Zuid" } }
+            new Station { Namen = new Namen { Lang = "Amsterdam Centraal" } },
+            new Station { Namen = new Namen { Lang = "Amsterdam Zuid" } }
         };
         var stationsDto = new StationsDto { Payload = expectedPayload };
 
@@ -81,10 +73,10 @@ public class StationsServiceTests
     public async Task GetFilteredStationsAsync_WithNoMatchingQuery_ReturnsEmptyList()
     {
         string query = "Rotterdam";
-        var initialPayload = new List<Payload>
+        var initialPayload = new List<Station>
         {
-            new Payload { Namen = new Namen { Lang = "Amsterdam Centraal" } },
-            new Payload { Namen = new Namen { Lang = "Amsterdam Zuid" } }
+            new Station { Namen = new Namen { Lang = "Amsterdam Centraal" } },
+            new Station { Namen = new Namen { Lang = "Amsterdam Zuid" } }
         };
         var stationsDto = new StationsDto { Payload = initialPayload };
 
