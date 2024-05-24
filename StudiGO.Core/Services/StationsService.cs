@@ -16,9 +16,9 @@ public class StationsService
     {
         var stationsDto = await _stationsRepository.GetStationsAsync(query, limit);
         
-        List<Payload> filteredPayload = stationsDto.payload.ToList();
+        List<Station> filteredPayload = stationsDto.Payload.ToList();
         
-        foreach (var payload in stationsDto.payload)
+        foreach (var payload in stationsDto.Payload)
         {
             var namen = payload.Namen;
             
@@ -28,7 +28,7 @@ public class StationsService
             }
         }
 
-        stationsDto.payload = filteredPayload;
+        stationsDto.Payload = filteredPayload;
         
         return stationsDto;
     }
