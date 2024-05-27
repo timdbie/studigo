@@ -1,7 +1,9 @@
+using System.Data;
 using StudiGO.Core.Interfaces;
 using StudiGO.Core.Services;
 using StudiGO.DAL.Repositories;
 using Auth0.AspNetCore.Authentication;
+using MySql.Data.MySqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,12 @@ builder.Services.AddScoped<ISingleTripRepository, SingleTripRepository>();
 builder.Services.AddScoped<StationsService>();
 builder.Services.AddScoped<TripsService>();
 builder.Services.AddScoped<SingleTripService>();
+
+builder.Services.AddScoped<IDbConnection>(sp =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("MySqlConnection");
+    return new MySqlConnection(connectionString);
+});
 
 builder.Services.Configure<CookiePolicyOptions>(options => {
     options.MinimumSameSitePolicy = SameSiteMode.None;
